@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CMATRICE_H
+#define CMATRICE_H 1
+
 template <class MType> class CMatrice
 {
 private:
@@ -23,7 +25,7 @@ public:
 	/*************************************************************
 	*** Constructeur de recopie                                ***
 	**************************************************************
-	*** E : MATParam ; la matrice à recopier					   ***
+	*** E : MATParam ; la matrice à recopier                   ***
 	*** nécessite : néant									   ***
 	*** S : néant											   ***
 	*** entraine : Matrice initialisée par recopie de MATParam ***
@@ -99,3 +101,4 @@ public:
 	CMatrice MATCalculerTransposee();
 };
 
+#endif
