@@ -1,5 +1,5 @@
-#ifndef CEXCEPTION_H
-#define CEXCEPTION_H 1
+#ifndef CEXCEPTIONS_H
+#define CEXCEPTIONS_H 1
 /***************************************
 *** Classe de gestion des exceptions ***
 ***************************************/
@@ -7,7 +7,7 @@
 //Def valeur initiale pour une exception
 #define DEFAUT 0
 
-class Cexception
+class CExceptions
 {
 
 //Attributs
@@ -16,7 +16,7 @@ private:
 	
 //Methodes
 public:
-	Cexception(void);
+	CExceptions(void);
 	/**********************************************
 	*** Constructeur par défaut                 ***
 	***********************************************
@@ -26,7 +26,7 @@ public:
 	*** entraine : exception initialisée à FAUX ***
 	**********************************************/
 
-	Cexception(unsigned int uiParam);
+	CExceptions(unsigned int uiParam);
 	/*************************************************
 	*** Constructeur avec un paramètre             ***
 	**************************************************
@@ -36,7 +36,7 @@ public:
 	*** entraine : exception initialisée à uiParam ***
 	*************************************************/
 
-	~Cexception(void);
+	~CExceptions(void);
 	/**********************************************
 	*** Destructeur de la classe                ***
 	***********************************************

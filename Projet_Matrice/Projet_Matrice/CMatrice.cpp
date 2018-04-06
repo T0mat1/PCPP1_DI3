@@ -2,11 +2,11 @@
 #include "CMatrice.h"
 
 
-CMatrice::CMatrice()
+CMatrice<double>::CMatrice()
 {
 }
 
 
-CMatrice::~CMatrice()
+CMatrice<double>::~CMatrice()
 {
 }

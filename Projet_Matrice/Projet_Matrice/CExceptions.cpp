@@ -3,7 +3,7 @@
 ***************************************/
 
 #include "stdafx.h"
-#include "Cexception.h"
+#include "CExceptions.h"
 
 /**********************************************
 *** Constructeur par défaut                 ***
@@ -13,7 +13,7 @@
 *** S : néant                               ***
 *** entraine : exception initialisée à FAUX ***
 **********************************************/
-Cexception::Cexception(void)
+CExceptions::CExceptions(void)
 {
 	uiEXCValeur = DEFAUT;
 }
@@ -26,7 +26,7 @@ Cexception::Cexception(void)
 *** S : néant                                  ***
 *** entraine : exception initialisée à uiParam ***
 *************************************************/
-Cexception::Cexception(unsigned int uiParam)
+CExceptions::CExceptions(unsigned int uiParam)
 {
 	EXCModifierValeur(uiParam);
 }
@@ -39,7 +39,7 @@ Cexception::Cexception(unsigned int uiParam)
 *** S : néant                               ***
 *** entraine : exception détruite           ***
 **********************************************/
-Cexception::~Cexception(void)
+CExceptions::~CExceptions(void)
 {
 
 }
@@ -52,7 +52,7 @@ Cexception::~Cexception(void)
 *** S : néant                               ***
 *** entraine : valeur modifiée              ***
 **********************************************/
-void Cexception::EXCModifierValeur(unsigned int uiParam)
+void CExceptions::EXCModifierValeur(unsigned int uiParam)
 {
 	uiEXCValeur = uiParam;
 }
@@ -65,7 +65,7 @@ void Cexception::EXCModifierValeur(unsigned int uiParam)
 *** S : valeur de l'exception               ***
 *** entraine : on retourne la valeur        ***
 **********************************************/
-unsigned int Cexception::EXCLireValeur()
+unsigned int CExceptions::EXCLireValeur()
 {
 	return uiEXCValeur;
 }
