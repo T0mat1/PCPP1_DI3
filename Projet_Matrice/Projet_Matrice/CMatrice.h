@@ -4,9 +4,9 @@
 template <class MType> class CMatrice
 {
 private:
-	MType ** pptMatrice;
-	unsigned int uiNombreLignes;
-	unsigned int uiNombreColonnes;
+	MType ** pptMATMatrice;
+	unsigned int uiMATNombreLignes;
+	unsigned int uiMATNombreColonnes;
 
 public:
 	// ----------------------------------------------- Constructeurs et destructeur ----------------------------------------------- 
