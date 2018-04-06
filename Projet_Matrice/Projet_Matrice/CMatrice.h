@@ -1,10 +1,10 @@
 #ifndef CMATRICE_H
 #define CMATRICE_H 1
 
-template <class MType> class CMatrice
+template <typename MType> class CMatrice
 {
 private:
-	MType pptMATMatrice[][];
+	MType ** pptMATMatrice;
 	unsigned int uiMATNombreLignes;
 	unsigned int uiMATNombreColonnes;
 

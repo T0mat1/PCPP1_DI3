@@ -2,7 +2,7 @@
 #include "CMatrice.h"
 
 
-template <class MType> CMatrice<class MType>::CMatrice()
+template <typename MType> CMatrice<typename MType>::CMatrice()
 {
 	uiMATNombreLignes = 1;
 	uiMATNombreColonnes = 1;
@@ -11,6 +11,6 @@ template <class MType> CMatrice<class MType>::CMatrice()
 }
 
 
-CMatrice<class MType>::~CMatrice()
+template <typename MType> CMatrice<typename MType>::~CMatrice()
 {
 }
