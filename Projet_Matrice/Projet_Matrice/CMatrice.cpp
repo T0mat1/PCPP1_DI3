@@ -2,11 +2,15 @@
 #include "CMatrice.h"
 
 
-CMatrice<double>::CMatrice()
+template <class MType> CMatrice<class MType>::CMatrice()
 {
+	uiMATNombreLignes = 1;
+	uiMATNombreColonnes = 1;
+	pptMATMatrice = new MType*[uiMATNombreLignes];
+	pptMATMatrice[0] = new MType[uiMATNombreColonnes];
 }
 
 
-CMatrice<double>::~CMatrice()
+CMatrice<class MType>::~CMatrice()
 {
 }

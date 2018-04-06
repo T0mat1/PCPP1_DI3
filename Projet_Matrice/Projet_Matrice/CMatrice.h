@@ -4,7 +4,7 @@
 template <class MType> class CMatrice
 {
 private:
-	MType ** pptMATMatrice;
+	MType pptMATMatrice[][];
 	unsigned int uiMATNombreLignes;
 	unsigned int uiMATNombreColonnes;
 
