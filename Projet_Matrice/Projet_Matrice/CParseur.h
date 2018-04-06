@@ -1,5 +1,8 @@
 #ifndef CPARSEUR_H
 #define CPARSEUR_H 1
+/***********************************
+*** Classe de gestion du parseur ***
+***********************************/
 
 #include "CMatrice.h"
 #include <iostream>
