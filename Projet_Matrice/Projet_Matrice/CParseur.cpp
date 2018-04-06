@@ -1,5 +1,5 @@
-#include "stdafx.h"
 #include "CParseur.h"
+#include "stdafx.h"
 
 
 CParseur::CParseur(void)
