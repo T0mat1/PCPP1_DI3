@@ -2,8 +2,8 @@
 *** Classe de gestion des exceptions ***
 ***************************************/
 
-#include "stdafx.h"
 #include "CExceptions.h"
+#include "stdafx.h"
 
 /**********************************************
 *** Constructeur par défaut                 ***
