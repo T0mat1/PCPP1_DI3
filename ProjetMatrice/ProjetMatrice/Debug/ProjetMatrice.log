@@ -1,0 +1,24 @@
+﻿La génération a démarré 10/04/2018 14:44:04.
+     1>Projet "C:\Users\Administrateur\Desktop\Polytech_BR\VisualStudio\PCPP1_DI3\ProjetMatrice\ProjetMatrice\ProjetMatrice.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt CExceptions.cpp CParseur.cpp Projet_Matrice.cpp
+         Projet_Matrice.cpp
+         CParseur.cpp
+         Génération de code en cours...
+         Compilation en cours...
+         CExceptions.cpp
+         Génération de code en cours...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Administrateur\Desktop\Polytech_BR\VisualStudio\PCPP1_DI3\ProjetMatrice\Debug\ProjetMatrice.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Administrateur\Desktop\Polytech_BR\VisualStudio\PCPP1_DI3\ProjetMatrice\Debug\ProjetMatrice.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Administrateur\Desktop\Polytech_BR\VisualStudio\PCPP1_DI3\ProjetMatrice\Debug\ProjetMatrice.lib" /MACHINE:X86 Debug\CExceptions.obj
+         Debug\CMatrice.obj
+         Debug\CParseur.obj
+         Debug\Projet_Matrice.obj
+     1>CParseur.obj : error LNK2019: symbole externe non résolu "public: __thiscall CMatrice<double>::CMatrice<double>(void)" (??0?$CMatrice@N@@QAE@XZ) référencé dans la fonction "public: class CMatrice<double> __thiscall CParseur::PARLireFichier(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?PARLireFichier@CParseur@@QAE?AV?$CMatrice@N@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+     1>Projet_Matrice.obj : error LNK2001: symbole externe non résolu "public: __thiscall CMatrice<double>::CMatrice<double>(void)" (??0?$CMatrice@N@@QAE@XZ)
+     1>Projet_Matrice.obj : error LNK2019: symbole externe non résolu "public: __thiscall CMatrice<double>::~CMatrice<double>(void)" (??1?$CMatrice@N@@QAE@XZ) référencé dans la fonction _main
+     1>C:\Users\Administrateur\Desktop\Polytech_BR\VisualStudio\PCPP1_DI3\ProjetMatrice\Debug\ProjetMatrice.exe : fatal error LNK1120: 2 externes non résolus
+     1>Génération du projet "C:\Users\Administrateur\Desktop\Polytech_BR\VisualStudio\PCPP1_DI3\ProjetMatrice\ProjetMatrice\ProjetMatrice.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
+
+ÉCHEC de la build.
+
+Temps écoulé 00:00:01.43
