@@ -1,4 +1,3 @@
-#include "CMatrice.h"
 
 
 template <typename MType> CMatrice<typename MType>::CMatrice()
