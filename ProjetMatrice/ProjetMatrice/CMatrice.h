@@ -1,6 +1,8 @@
 #ifndef CMATRICE_H
 #define CMATRICE_H 1
 
+#include <iostream>
+
 #define MAT_SIZE_EXCEPTION 20000
 
 template <typename MType> class CMatrice
@@ -319,9 +321,9 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator/(int iPara
 template <typename MType> void CMatrice<MType>::MATAfficherMatrice()
 {
 	std::cout << "Affichage de la matrice de taille ( " << MATLireNombreLignes() << " x " << MATLireNombreColonnes() << " )\n";
-	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
+	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < MATLireNombreLignes(); uiBoucleLignes++)
 	{	
-		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
+		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < MATLireNombreColonnes(); uiBoucleColonnes++)
 		{
 			std::cout << MATLireComposante(uiBoucleLignes, uiBoucleColonnes) << "\t";
 		}
