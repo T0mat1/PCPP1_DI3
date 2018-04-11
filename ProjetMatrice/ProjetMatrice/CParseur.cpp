@@ -11,7 +11,7 @@ CParseur::~CParseur(void)
 {
 }
 
-CMatrice<double> CParseur::PARLireFichier(std::string sNomFichier)
+CMatrice<double> * CParseur::PARLireFichier(std::string sNomFichier)
 {
 	std::fstream fsFlux;
 	std::string test;
@@ -21,5 +21,5 @@ CMatrice<double> CParseur::PARLireFichier(std::string sNomFichier)
 	printf("%d",test);
 	fsFlux.close();
 
-	return CMatrice<double>();
+	return new CMatrice<double>();
 }

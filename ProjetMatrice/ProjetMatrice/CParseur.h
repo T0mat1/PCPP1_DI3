@@ -32,7 +32,7 @@ public:
 	*************************************************/
 	
 	//------------------------------------------------ Méthodes ------------------------------------------------
-	CMatrice<double> PARLireFichier(std::string sNomFichier);
+	CMatrice<double> * PARLireFichier(std::string sNomFichier);
 	/**********************************************
 	*** Interpreteur de fichier                 ***
 	***********************************************
