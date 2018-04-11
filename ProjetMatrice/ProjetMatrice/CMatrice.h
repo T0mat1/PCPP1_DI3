@@ -176,7 +176,7 @@ public:
 	*** entraine : Affichage de la matrice dans la console										   ***
 	*************************************************************************************************/
 	
-	CMatrice MATCalculerTransposee();
+	CMatrice & MATCalculerTransposee();
 	/*************************************************************************************************
 	*** Méthode de calcul de la transposée d'une matrice										   ***
 	**************************************************************************************************
@@ -236,7 +236,7 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator*(int iPara
 	{	
 		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
 		{
-			pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
+			pmatMatriceTemp->MATModifierComposante(iParam * MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
 		}
 	}
 	return *pmatMatriceTemp;
@@ -266,17 +266,81 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator*(CMatrice 
 	}
 }
 
+template <typename MType> CMatrice<MType> & CMatrice<MType>::operator+(CMatrice & MATParam)
+{
+	if (MATLireNombreColonnes() != MATParam->MATLireNombreColonnes() || MATLireNombreLignes() != MATParam->MATLireNombreLignes()) {
+		throw new CExceptions(MAT_SIZE_EXCEPTION);
+	} else {
+		CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(MATLireNombreLignes(), MATLireNombreColonnes());
+	
+		for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
+		{	
+			for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
+			{
+				pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes) + MATParam->MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
+			}
+		}
+		return *pmatMatriceTemp;
+	}
+}
 
 template <typename MType> CMatrice<MType> & CMatrice<MType>::operator-(CMatrice & MATParam)
 {
-
+	if (MATLireNombreColonnes() != MATParam->MATLireNombreColonnes() || MATLireNombreLignes() != MATParam->MATLireNombreLignes()) {
+		throw new CExceptions(MAT_SIZE_EXCEPTION);
+	} else {
+		CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(MATLireNombreLignes(), MATLireNombreColonnes());
+	
+		for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
+		{	
+			for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
+			{
+				pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes) - MATParam->MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
+			}
+		}
+		return *pmatMatriceTemp;
+	}
 }
 
-/*
-CMatrice & operator+(CMatrice & MATParam);
-CMatrice operator/(int iParam);
-void MATAfficherMatrice();
-CMatrice MATCalculerTransposee();
-*/
+template <typename MType> CMatrice<MType> & CMatrice<MType>::operator/(int iParam)
+{
+	CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(this);
+
+	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
+	{	
+		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
+		{
+			pmatMatriceTemp->MATModifierComposante(iParam / MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
+		}
+	}
+	return *pmatMatriceTemp;
+}
+
+template <typename MType> void CMatrice<MType>::MATAfficherMatrice()
+{
+	std::cout << "Affichage de la matrice de taille ( " << MATLireNombreLignes() << " x " << MATLireNombreColonnes() << " )\n";
+	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
+	{	
+		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
+		{
+			std::cout << MATLireComposante(uiBoucleLignes, uiBoucleColonnes) << "\t";
+		}
+		std::cout << "\n";
+	}
+}
+
+template <typename MType> CMatrice<MType> & CMatrice<MType>::MATCalculerTransposee()
+{
+	CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(MATLireNombreColonnes(), MATLireNombreLignes());
+
+	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < MATLireNombreLignes(); uiBoucleLignes++)
+	{	
+		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < MATLireNombreColonnes(); uiBoucleColonnes++)
+		{
+			pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleColonnes, uiBoucleLignes); 
+		}
+	}
+	return *pmatMatriceTemp;
+}
 
 #endif
