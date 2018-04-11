@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#define MAT_SIZE_EXCEPTION 20000
+#define MAT_SIZE_EXCEPTION 20001
 
 template <typename MType> class CMatrice
 {
@@ -22,7 +22,7 @@ public:
 	*** E : néant																				   ***
 	*** nécessite : néant																		   ***
 	*** S : néant																				   ***
-	*** entraine : Matrice 1x1 non initialisée														   ***
+	*** entraine : Matrice 0x0 non initialisée 													   ***
 	*************************************************************************************************/
 
 	CMatrice(CMatrice & MATParam);
@@ -43,6 +43,17 @@ public:
 	*** nécessite : néant																		  ***
 	*** S : néant																				  ***
 	*** entraine : Matrice uiNombreLignes x uiNombreColonnes non initialisée					  ***
+	************************************************************************************************/
+
+	CMatrice(unsigned int uiNombreLignes, unsigned int uiNombreColonnes, MType tParam);
+	/************************************************************************************************
+	*** Constructeur par défaut																	  ***
+	*************************************************************************************************
+	*** E : uiNombreLignes, uiNombreColonnes ; les dimensions de la matrice						  ***
+	***     tParam ; la valeur initiale															  ***
+	*** nécessite : néant																		  ***
+	*** S : néant																				  ***
+	*** entraine : Matrice uiNombreLignes x uiNombreColonnes initialisée à tParam				  ***
 	************************************************************************************************/
 
 	~CMatrice();
@@ -125,7 +136,7 @@ public:
 	*** entraine : néant																		   ***
 	*************************************************************************************************/
 	
-	CMatrice & operator*(CMatrice & MATParam);
+	CMatrice<MType> & operator*(CMatrice & MATParam);
 	/*************************************************************************************************
 	*** Surcharge de l'opérateur * (multiplication avec une matrice)							   ***
 	**************************************************************************************************
@@ -191,10 +202,9 @@ public:
 
 template <typename MType> CMatrice<MType>::CMatrice()
 {
-	uiMATNombreLignes = 1;
-	uiMATNombreColonnes = 1;
-	pptMATMatrice = new MType*[uiMATNombreLignes];
-	pptMATMatrice[0] = new MType[uiMATNombreColonnes];
+	uiMATNombreLignes = 0;
+	uiMATNombreColonnes = 0;
+	pptMATMatrice = nullptr;
 }
 
 template <typename MType> CMatrice<MType>::CMatrice(CMatrice & MATParam)
@@ -214,13 +224,32 @@ template <typename MType> CMatrice<MType>::CMatrice(CMatrice & MATParam)
 
 template <typename MType> CMatrice<MType>::CMatrice(unsigned int uiNombreLignes, unsigned int uiNombreColonnes)
 {
-	unsigned int uiBoucleLignes, uiBoucleColonnes;
+	unsigned int uiBoucleLignes;
 	uiMATNombreLignes = uiNombreLignes;
 	uiMATNombreColonnes = uiNombreColonnes;
 	pptMATMatrice = new MType*[uiMATNombreLignes];
 
 	for (uiBoucleLignes = 0; uiBoucleLignes < uiMATNombreLignes; uiBoucleLignes++)
 		pptMATMatrice[uiBoucleLignes] = new MType[uiMATNombreColonnes];
+}
+
+template <typename MType> CMatrice<MType>::CMatrice(unsigned int uiNombreLignes, unsigned int uiNombreColonnes, MType tParam)
+{
+	unsigned int uiBoucleLignes;
+	uiMATNombreLignes = uiNombreLignes;
+	uiMATNombreColonnes = uiNombreColonnes;
+	pptMATMatrice = new MType*[uiMATNombreLignes];
+
+	for (uiBoucleLignes = 0; uiBoucleLignes < uiMATNombreLignes; uiBoucleLignes++)
+		pptMATMatrice[uiBoucleLignes] = new MType[uiMATNombreColonnes];
+
+	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < MATLireNombreLignes(); uiBoucleLignes++)
+	{
+		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < MATLireNombreColonnes(); uiBoucleColonnes++)
+		{
+			MATModifierComposante(tParam, uiBoucleLignes, uiBoucleColonnes);
+		}
+	}
 }
 
 template <typename MType> CMatrice<MType>::~CMatrice()
@@ -320,14 +349,14 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator/(int iPara
 
 template <typename MType> void CMatrice<MType>::MATAfficherMatrice()
 {
-	std::cout << "Affichage de la matrice de taille ( " << MATLireNombreLignes() << " x " << MATLireNombreColonnes() << " )\n";
+	std::cout << "Affichage de la matrice de taille ( " << MATLireNombreLignes() << " x " << MATLireNombreColonnes() << " )" << std::endl;
 	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < MATLireNombreLignes(); uiBoucleLignes++)
 	{	
 		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < MATLireNombreColonnes(); uiBoucleColonnes++)
 		{
 			std::cout << MATLireComposante(uiBoucleLignes, uiBoucleColonnes) << "\t";
 		}
-		std::cout << "\n";
+		std::cout << std::endl;
 	}
 }
 
@@ -343,11 +372,6 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::MATCalculerTranspos
 		}
 	}
 	return *pmatMatriceTemp;
-}
-
-template <typename MType> CMatrice<MType> & CMatrice<MType>::operator=(CMatrice & MATParam)
-{
-
 }
 
 #endif

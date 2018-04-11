@@ -1,5 +1,9 @@
 #ifndef CPARSEUR_H
 #define CPARSEUR_H 1
+
+#define OPEN_FILE_EXCEPTION			25001
+#define NO_DOUBLE_EXCEPTION			25002
+#define CORRUPTED_FILE_EXCEPTION	25003
 /***********************************
 *** Classe de gestion du parseur ***
 ***********************************/
@@ -32,7 +36,7 @@ public:
 	*************************************************/
 	
 	//------------------------------------------------ Méthodes ------------------------------------------------
-	CMatrice<double> * PARLireFichier(std::string sNomFichier);
+	CMatrice<double>* PARLireFichier(std::string sNomFichier);
 	/**********************************************
 	*** Interpreteur de fichier                 ***
 	***********************************************
