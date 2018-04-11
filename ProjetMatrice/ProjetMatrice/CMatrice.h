@@ -345,4 +345,9 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::MATCalculerTranspos
 	return *pmatMatriceTemp;
 }
 
+template <typename MType> CMatrice<MType> & CMatrice<MType>::operator=(CMatrice & MATParam)
+{
+
+}
+
 #endif
