@@ -126,7 +126,7 @@ public:
 
 	//----------------------------------------------- Surcharges d'operateurs ----------------------------------------------- 
 
-	CMatrice & operator*(int iParam);
+	CMatrice operator*(int iParam);
 	/*************************************************************************************************
 	*** Surcharge de l'opérateur * (multiplication avec un entier)								   ***
 	**************************************************************************************************
@@ -136,7 +136,7 @@ public:
 	*** entraine : néant																		   ***
 	*************************************************************************************************/
 	
-	CMatrice<MType> & operator*(CMatrice & MATParam);
+	CMatrice operator*(CMatrice & MATParam);
 	/*************************************************************************************************
 	*** Surcharge de l'opérateur * (multiplication avec une matrice)							   ***
 	**************************************************************************************************
@@ -146,7 +146,7 @@ public:
 	*** entraine : néant																		   ***
 	*************************************************************************************************/
 
-	CMatrice & operator+(CMatrice & MATParam);
+	CMatrice operator+(CMatrice & MATParam);
 	/*************************************************************************************************
 	*** Surcharge de l'opérateur + (addition avec une matrice)									   ***
 	**************************************************************************************************
@@ -156,7 +156,7 @@ public:
 	*** entraine : néant																		   ***
 	*************************************************************************************************/
 
-	CMatrice & operator-(CMatrice & MATParam);
+	CMatrice operator-(CMatrice & MATParam);
 	/*************************************************************************************************
 	*** Surcharge de l'opérateur - (soustraction par une matrice)								   ***
 	**************************************************************************************************
@@ -166,7 +166,7 @@ public:
 	*** entraine : néant																		   ***
 	*************************************************************************************************/
 	
-	CMatrice & operator/(int iParam);
+	CMatrice operator/(int iParam);
 	/*************************************************************************************************
 	*** Surcharge de l'opérateur / (division par un entier)										   ***
 	**************************************************************************************************
@@ -259,9 +259,9 @@ template <typename MType> CMatrice<MType>::~CMatrice()
 	delete pptMATMatrice;
 }
 
-template <typename MType> CMatrice<MType> & CMatrice<MType>::operator*(int iParam)
+template <typename MType> CMatrice<MType> CMatrice<MType>::operator*(int iParam)
 {
-	CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(this);
+	CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(*this);
 
 	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
 	{	
@@ -273,7 +273,7 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator*(int iPara
 	return *pmatMatriceTemp;
 }
 
-template <typename MType> CMatrice<MType> & CMatrice<MType>::operator*(CMatrice & MATParam)
+template <typename MType> CMatrice<MType> CMatrice<MType>::operator*(CMatrice & MATParam)
 {
 	if (MATLireNombreLignes() != MATParam->MATLireNombreColonnes()) {
 		throw new CExceptions(MAT_SIZE_EXCEPTION);
@@ -297,7 +297,7 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator*(CMatrice 
 	}
 }
 
-template <typename MType> CMatrice<MType> & CMatrice<MType>::operator+(CMatrice & MATParam)
+template <typename MType> CMatrice<MType> CMatrice<MType>::operator+(CMatrice & MATParam)
 {
 	if (MATLireNombreColonnes() != MATParam->MATLireNombreColonnes() || MATLireNombreLignes() != MATParam->MATLireNombreLignes()) {
 		throw new CExceptions(MAT_SIZE_EXCEPTION);
@@ -315,7 +315,7 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator+(CMatrice 
 	}
 }
 
-template <typename MType> CMatrice<MType> & CMatrice<MType>::operator-(CMatrice & MATParam)
+template <typename MType> CMatrice<MType> CMatrice<MType>::operator-(CMatrice & MATParam)
 {
 	if (MATLireNombreColonnes() != MATParam->MATLireNombreColonnes() || MATLireNombreLignes() != MATParam->MATLireNombreLignes()) {
 		throw new CExceptions(MAT_SIZE_EXCEPTION);
@@ -333,9 +333,9 @@ template <typename MType> CMatrice<MType> & CMatrice<MType>::operator-(CMatrice 
 	}
 }
 
-template <typename MType> CMatrice<MType> & CMatrice<MType>::operator/(int iParam)
+template <typename MType> CMatrice<MType> CMatrice<MType>::operator/(int iParam)
 {
-	CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(this);
+	CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(*this);
 
 	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
 	{	
