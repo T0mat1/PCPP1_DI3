@@ -4,6 +4,7 @@
 #include <iostream>
 
 #define MAT_SIZE_EXCEPTION 20001
+#define ZERODIVIDE_EXCEPTION 20002
 
 template <typename MType> class CMatrice
 {
@@ -235,12 +236,11 @@ template <typename MType> CMatrice<MType>::CMatrice(unsigned int uiNombreLignes,
 
 template <typename MType> CMatrice<MType>::CMatrice(unsigned int uiNombreLignes, unsigned int uiNombreColonnes, MType tParam)
 {
-	unsigned int uiBoucleLignes;
 	uiMATNombreLignes = uiNombreLignes;
 	uiMATNombreColonnes = uiNombreColonnes;
 	pptMATMatrice = new MType*[uiMATNombreLignes];
 
-	for (uiBoucleLignes = 0; uiBoucleLignes < uiMATNombreLignes; uiBoucleLignes++)
+	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < uiMATNombreLignes; uiBoucleLignes++)
 		pptMATMatrice[uiBoucleLignes] = new MType[uiMATNombreColonnes];
 
 	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < MATLireNombreLignes(); uiBoucleLignes++)
@@ -275,20 +275,19 @@ template <typename MType> CMatrice<MType> CMatrice<MType>::operator*(int iParam)
 
 template <typename MType> CMatrice<MType> CMatrice<MType>::operator*(CMatrice & MATParam)
 {
-	if (MATLireNombreLignes() != MATParam->MATLireNombreColonnes()) {
+	if (MATLireNombreLignes() != MATParam.MATLireNombreColonnes()) {
 		throw new CExceptions(MAT_SIZE_EXCEPTION);
 	} else {
-		CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(MATLireNombreLignes(), MATParam->MATLireNombreColonnes());
-		MType tTmp;
+		CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(MATLireNombreLignes(), MATParam.MATLireNombreColonnes());
+		MType tTmp = *(new MType());
 	
 		for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
 		{	
 			for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
 			{
-				tTmp = MATLireComposante(uiBoucleLignes, uiBoucleColonnes) * MATParam->MATLireComposante(uiBoucleLignes, uiBoucleColonnes);
 				for (unsigned int uiBoucle = 1; uiBoucle < MATLireNombreColonnes(); uiBoucle++)
-				{	
-					tTmp = tTmp + MATLireComposante(uiBoucleLignes, uiBoucleColonnes+uiBoucle) * MATParam->MATLireComposante(uiBoucleLignes+uiBoucle, uiBoucleColonnes);
+				{
+					tTmp = tTmp + (MATLireComposante(uiBoucleLignes, uiBoucle) * MATParam.MATLireComposante(uiBoucle, uiBoucleColonnes));
 				}
 				pmatMatriceTemp->MATModifierComposante(tTmp, uiBoucleLignes, uiBoucleColonnes);
 			}
@@ -299,7 +298,7 @@ template <typename MType> CMatrice<MType> CMatrice<MType>::operator*(CMatrice & 
 
 template <typename MType> CMatrice<MType> CMatrice<MType>::operator+(CMatrice & MATParam)
 {
-	if (MATLireNombreColonnes() != MATParam->MATLireNombreColonnes() || MATLireNombreLignes() != MATParam->MATLireNombreLignes()) {
+	if (MATLireNombreColonnes() != MATParam.MATLireNombreColonnes() || MATLireNombreLignes() != MATParam.MATLireNombreLignes()) {
 		throw new CExceptions(MAT_SIZE_EXCEPTION);
 	} else {
 		CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(MATLireNombreLignes(), MATLireNombreColonnes());
@@ -308,7 +307,7 @@ template <typename MType> CMatrice<MType> CMatrice<MType>::operator+(CMatrice & 
 		{	
 			for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
 			{
-				pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes) + MATParam->MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
+				pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes) + MATParam.MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
 			}
 		}
 		return *pmatMatriceTemp;
@@ -317,7 +316,7 @@ template <typename MType> CMatrice<MType> CMatrice<MType>::operator+(CMatrice & 
 
 template <typename MType> CMatrice<MType> CMatrice<MType>::operator-(CMatrice & MATParam)
 {
-	if (MATLireNombreColonnes() != MATParam->MATLireNombreColonnes() || MATLireNombreLignes() != MATParam->MATLireNombreLignes()) {
+	if (MATLireNombreColonnes() != MATParam.MATLireNombreColonnes() || MATLireNombreLignes() != MATParam.MATLireNombreLignes()) {
 		throw new CExceptions(MAT_SIZE_EXCEPTION);
 	} else {
 		CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(MATLireNombreLignes(), MATLireNombreColonnes());
@@ -326,7 +325,7 @@ template <typename MType> CMatrice<MType> CMatrice<MType>::operator-(CMatrice & 
 		{	
 			for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
 			{
-				pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes) - MATParam->MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
+				pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes) - MATParam.MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
 			}
 		}
 		return *pmatMatriceTemp;
@@ -335,16 +334,20 @@ template <typename MType> CMatrice<MType> CMatrice<MType>::operator-(CMatrice & 
 
 template <typename MType> CMatrice<MType> CMatrice<MType>::operator/(int iParam)
 {
-	CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(*this);
+	if (iParam == 0) {
+		throw new CExceptions(ZERODIVIDE_EXCEPTION);
+	} else {
+		CMatrice<MType> * pmatMatriceTemp = new CMatrice<MType>(*this);
 
-	for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
-	{	
-		for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
-		{
-			pmatMatriceTemp->MATModifierComposante(iParam / MATLireComposante(uiBoucleLignes, uiBoucleColonnes), uiBoucleLignes, uiBoucleColonnes);
+		for (unsigned int uiBoucleLignes = 0; uiBoucleLignes < pmatMatriceTemp->MATLireNombreLignes(); uiBoucleLignes++)
+		{	
+			for (unsigned int uiBoucleColonnes = 0; uiBoucleColonnes < pmatMatriceTemp->MATLireNombreColonnes(); uiBoucleColonnes++)
+			{
+				pmatMatriceTemp->MATModifierComposante(MATLireComposante(uiBoucleLignes, uiBoucleColonnes) / iParam, uiBoucleLignes, uiBoucleColonnes);
+			}
 		}
+		return *pmatMatriceTemp;
 	}
-	return *pmatMatriceTemp;
 }
 
 template <typename MType> void CMatrice<MType>::MATAfficherMatrice()
