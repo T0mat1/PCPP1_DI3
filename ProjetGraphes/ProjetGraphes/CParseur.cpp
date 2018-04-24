@@ -50,7 +50,7 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		}
 
-		CMatrice<double> * pmatMatriceTemp = new CMatrice<double>(uiNBLignes, uiNBColonnes);
+		//CMatrice<double> * pmatMatriceTemp = new CMatrice<double>(uiNBLignes, uiNBColonnes);
 
 		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBLignes; uiBoucleLigne++) {
 			std::getline(input, sLigne);
@@ -61,7 +61,7 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 			for(unsigned int uiBoucleColonne = 0; uiBoucleColonne < uiNBColonnes; uiBoucleColonne++) {
 
 				sTemp = sLigne.substr(0, sLigne.find(" "));
-				pmatMatriceTemp->MATModifierComposante(std::stoi(sTemp), uiBoucleLigne, uiBoucleColonne);
+				//pmatMatriceTemp->MATModifierComposante(std::stoi(sTemp), uiBoucleLigne, uiBoucleColonne);
 				sLigne.erase(0, sLigne.find(" ")+1); // on efface de 0 jusqu'a la position du delimiteur + sa taille
 			}
 		}
@@ -73,7 +73,8 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 
 		input.close();
 
-		return pmatMatriceTemp;
+		//return pmatMatriceTemp;
+		return nullptr;
 	} else {
 		throw new CExceptions(OPEN_FILE_EXCEPTION);
 	}	
