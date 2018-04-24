@@ -9,6 +9,9 @@
 ***********************************/
 class CGraphe
 {
+public:
+	CGraphe(void);
+	~CGraphe(void);
 
 };
 
