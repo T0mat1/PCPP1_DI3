@@ -18,52 +18,50 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 
 	if (input) {
 		std::string sLigne;
-		unsigned int uiNBLignes, uiNBColonnes;
+		unsigned int uiNBSommets, uiNBArcs;
 
 		std::getline(input, sLigne);
-		if (sLigne.find("TypeMatrice=")==std::string::npos) {
+		if (sLigne.find("NBSommets=")==std::string::npos) {
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		} else {
-			if (sLigne.find("TypeMatrice=double")==std::string::npos) {
-				throw new CExceptions(NO_DOUBLE_EXCEPTION);
-			}
+			uiNBSommets = (unsigned int) std::stoi(sLigne.erase(0, 10));
 		}
 
 		std::getline(input, sLigne);
-		if (sLigne.find("NBLignes=")==std::string::npos) {
+		if (sLigne.find("NBArcs=")==std::string::npos) {
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		} else {
-			//store sNBLignes;
-			uiNBLignes = (unsigned int) std::stoi(sLigne.erase(0, 9));
+			uiNBArcs = (unsigned int) std::stoi(sLigne.erase(0, 7));
 		}
 
 		std::getline(input, sLigne);
-		if (sLigne.find("NBColonnes=")==std::string::npos) {
-			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
-		} else {
-			//store sNBColonnes
-			uiNBColonnes = (unsigned int) std::stoi(sLigne.erase(0, 11));
-		}
-
-		std::getline(input, sLigne);
-		if (sLigne.find("Matrice=[")==std::string::npos) {
+		if (sLigne.find("Sommets=[")==std::string::npos) {
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		}
 
 		//CMatrice<double> * pmatMatriceTemp = new CMatrice<double>(uiNBLignes, uiNBColonnes);
+		CGraphe * tmpGraphe =  new CGraphe();
 
-		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBLignes; uiBoucleLigne++) {
+		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBSommets; uiBoucleLigne++) {
 			std::getline(input, sLigne);
-			std::string sTemp;
-			unsigned int uiTempLigne = 0,uiTempColonne = 0;
-			
-			//store components values
-			for(unsigned int uiBoucleColonne = 0; uiBoucleColonne < uiNBColonnes; uiBoucleColonne++) {
+			tmpGraphe->GRAAjouterSommet(std::stoi(sLigne));
+		}
 
-				sTemp = sLigne.substr(0, sLigne.find(" "));
-				//pmatMatriceTemp->MATModifierComposante(std::stoi(sTemp), uiBoucleLigne, uiBoucleColonne);
-				sLigne.erase(0, sLigne.find(" ")+1); // on efface de 0 jusqu'a la position du delimiteur + sa taille
-			}
+		std::getline(input, sLigne);
+		if (sLigne.find("]")==std::string::npos) {
+			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
+		}
+
+				std::getline(input, sLigne);
+		if (sLigne.find("Sommets=[")==std::string::npos) {
+			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
+		}
+
+		CGraphe * tmpGraphe =  new CGraphe();
+
+		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBSommets; uiBoucleLigne++) {
+			std::getline(input, sLigne);
+			tmpGraphe->GRAAjouterArc(std::stoi(sLigne));
 		}
 
 		std::getline(input, sLigne);
