@@ -12,7 +12,7 @@ CParseur::~CParseur(void)
 {
 }
 
-CMatrice<double>* CParseur::PARLireFichier(std::string sNomFichier)
+CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 {
 	std::ifstream input(sNomFichier);
 
