@@ -7,6 +7,6 @@ Des infos en vrac
 Projet Java proposé par Lei Shang et codé par Thomas Rossi et Benoit Richard
 
 #### Date de rendu (Deadline)
-Matrices : Jeudi 19 Avril à 23:55<br />
-Graph : not started yet<br />
+Matrices : Jeudi 19 Avril 2018, 23:55<br />
+Graph : Dimanche 27 mai 2018, 23:55<br />
 Projet à rendre via Celene
