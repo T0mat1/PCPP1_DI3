@@ -39,7 +39,6 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		}
 
-		//CMatrice<double> * pmatMatriceTemp = new CMatrice<double>(uiNBLignes, uiNBColonnes);
 		CGraphe * tmpGraphe =  new CGraphe();
 
 		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBSommets; uiBoucleLigne++) {
@@ -53,13 +52,11 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 		}
 
 				std::getline(input, sLigne);
-		if (sLigne.find("Sommets=[")==std::string::npos) {
+		if (sLigne.find("Arcs=[")==std::string::npos) {
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		}
 
-		CGraphe * tmpGraphe =  new CGraphe();
-
-		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBSommets; uiBoucleLigne++) {
+		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBArcs; uiBoucleLigne++) {
 			std::getline(input, sLigne);
 			tmpGraphe->GRAAjouterArc(std::stoi(sLigne));
 		}
@@ -71,8 +68,7 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 
 		input.close();
 
-		//return pmatMatriceTemp;
-		return nullptr;
+		return tmpGraphe;
 	} else {
 		throw new CExceptions(OPEN_FILE_EXCEPTION);
 	}	
