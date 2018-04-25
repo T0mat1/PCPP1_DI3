@@ -4,6 +4,7 @@
 #include <vector>
 #include "CArc.h"
 #include "CSommet.h"
+#include "CExceptions.h"
 
 /***********************************
 *** Classe de gestion du graphe  ***
