@@ -4,14 +4,14 @@
 *** Classe de gestion des exceptions ***
 ***************************************/
 
-/**********************************************
-*** Constructeur par défaut                 ***
-***********************************************
-*** E : néant                               ***
-*** nécessite : néant                       ***
-*** S : néant                               ***
-*** entraine : exception initialisée à FAUX ***
-**********************************************/
+/************************************************
+*** Constructeur par défaut                   ***
+*************************************************
+*** E : néant                                 ***
+*** nécessite : néant                         ***
+*** S : néant								  ***
+*** entraine : exception initialisée à DEFAUT ***
+************************************************/
 CExceptions::CExceptions(void)
 {
 	uiEXCValeur = DEFAUT;
@@ -31,7 +31,7 @@ CExceptions::CExceptions(unsigned int uiParam)
 }
 
 /**********************************************
-*** Destructeur de la classe                ***
+*** Destructeur				                ***
 ***********************************************
 *** E : néant                               ***
 *** nécessite : néant                       ***
