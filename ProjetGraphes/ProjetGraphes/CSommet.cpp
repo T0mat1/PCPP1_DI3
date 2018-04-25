@@ -9,7 +9,7 @@ CSommet::CSommet(void)
 
 CSommet::CSommet(unsigned int uiNumero)
 {
-	uiSOMNumero = uiNumero;
+	SOMModifierNumero(uiNumero);
 }
 
 CSommet::~CSommet(void)
@@ -36,7 +36,12 @@ void CSommet::SOMSupprimerArcPartant(CArc ARCParam)
 	vSOMPartants.erase(remove(vSOMPartants.begin(), vSOMPartants.end(), ARCParam), vSOMPartants.end());
 }
 
-unsigned int CSommet::SOMLireNumero()
+inline unsigned int CSommet::SOMLireNumero()
 {
 	return uiSOMNumero;
+}
+
+inline void CSommet::SOMModifierNumero(unsigned int uiParam)
+{
+	uiSOMNumero = uiParam;
 }

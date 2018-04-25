@@ -84,7 +84,7 @@ public:
 	*** entraine : suppression de l'arc ARCParam du vecteur d'arc partants						   ***
 	*************************************************************************************************/
 	
-	unsigned int SOMLireNumero();
+	inline unsigned int SOMLireNumero();
 	/*************************************************************************************************
 	*** Accesseur en lecture de uiNumero														   ***
 	**************************************************************************************************
@@ -93,7 +93,7 @@ public:
 	*** S : uiSOMNumero																			   ***
 	*** entraine : Renvoie uiSOMNumero		 													   ***
 	*************************************************************************************************/
-	void SOMModifierNumero(unsigned int uiParam);
+	inline void SOMModifierNumero(unsigned int uiParam);
 	/*************************************************************************************************
 	*** Accesseur en ecriture de uiSOMNumero														   ***
 	**************************************************************************************************
