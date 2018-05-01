@@ -30,7 +30,7 @@ void CGraphe::GRAAjouterSommet(unsigned int uiNumero)
 	else
 	{
 		unsigned int uiBoucle = 0;
-		while (vGRAListeSommets[uiBoucle].SOMLireNumero() < uiNumero)
+		while (vGRAListeSommets[uiBoucle].SOMLireNumero() < uiNumero && uiBoucle < vGRAListeSommets.size())
 		{
 			uiBoucle++;
 		}
