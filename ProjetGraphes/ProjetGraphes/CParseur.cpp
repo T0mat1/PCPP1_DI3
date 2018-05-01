@@ -58,8 +58,17 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 
 		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBArcs; uiBoucleLigne++) {
 			std::getline(input, sLigne);
-			tmpGraphe->GRAAjouterArc(std::stoi(sLigne));
+			std::string sTemp;
+			unsigned int uiTempSommet1 = 0, uiTempSommet2 = 0;
+
+			//store components values
+			uiTempSommet1 = std::stoi(sLigne.substr(0, sLigne.find(" ")));
+			sLigne.erase(0, sLigne.find(" ") + 1); // on efface de 0 jusqu'a la position du delimiteur + sa taille
+			uiTempSommet2 = std::stoi(sLigne.substr(0, sLigne.find(" ")));
+
+			tmpGraphe->GRAAjouterArc(uiTempSommet1, uiTempSommet2);
 		}
+
 
 		std::getline(input, sLigne);
 		if (sLigne.find("]")==std::string::npos) {
