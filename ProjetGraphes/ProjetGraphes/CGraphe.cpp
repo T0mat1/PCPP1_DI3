@@ -23,5 +23,27 @@ CGraphe::~CGraphe(void)
 
 void CGraphe::GRAAjouterSommet(unsigned int uiNumero)
 {
-	vGRAListeSommets.push_back(*(new CSommet(uiNumero)));
+	if (uiGRANbSommets == 0)
+	{
+		vGRAListeSommets.push_back(*(new CSommet(uiNumero)));
+	}
+	else
+	{
+		unsigned int uiBoucle = 0;
+		while (vGRAListeSommets[uiBoucle].SOMLireNumero() < uiNumero)
+		{
+			uiBoucle++;
+		}
+		vGRAListeSommets.insert(vGRAListeSommets.begin() + uiBoucle, *(new CSommet(uiNumero)));
+	}
+	uiGRANbSommets++;
+
 }
+
+/*
+void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
+void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
+void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiNouvelleDestination)
+void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
+void CGraphe::GRAAfficherGraphe()
+*/
