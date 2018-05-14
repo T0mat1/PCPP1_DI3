@@ -110,6 +110,17 @@ public:
 	*** entraine : affichage du graphe dans la console sous forme de matrice   ***
 	*****************************************************************************/
 
+private:
+	inline unsigned int GRATrouverIndiceSommet(unsigned int uiNumero);
+	/*****************************************************************************
+	*** Méthode retournant l'indice d'un sommet								   ***
+	******************************************************************************
+	*** E : uiIndice : unsigned int											   ***
+	*** nécessite : néant													   ***
+	*** S : uhnisgned int : l'indice du CSommet	de numéro uiNumero			   ***
+	*** entraine : néant													   ***
+	*****************************************************************************/
+
 };
 
 

@@ -29,21 +29,41 @@ void CGraphe::GRAAjouterSommet(unsigned int uiNumero)
 	}
 	else
 	{
-		unsigned int uiBoucle = 0;
-		while (vGRAListeSommets[uiBoucle].SOMLireNumero() < uiNumero && uiBoucle < vGRAListeSommets.size())
-		{
-			uiBoucle++;
-		}
-		vGRAListeSommets.insert(vGRAListeSommets.begin() + uiBoucle, *(new CSommet(uiNumero)));
+		vGRAListeSommets.insert(vGRAListeSommets.begin() + GRATrouverIndiceSommet(uiNumero), *(new CSommet(uiNumero)));
 	}
 	uiGRANbSommets++;
 
 }
 
-/*
 void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
+{
+	/*
+	if (uiGRANbSommets ==0)
+		// throw exception
+	else
+	*/
+	vGRAListeSommets.erase(vGRAListeSommets.begin() + GRATrouverIndiceSommet(uiNumero));
+	uiGRANbSommets--;
+}
+
 void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
+{
+	//TODO
+}
+/*
 void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiNouvelleDestination)
+/*
 void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
+/*
 void CGraphe::GRAAfficherGraphe()
 */
+
+inline unsigned int CGraphe::GRATrouverIndiceSommet(unsigned int uiNumero)
+{
+	unsigned int uiBoucle;
+	while (vGRAListeSommets[uiBoucle].SOMLireNumero() < uiNumero && uiBoucle < vGRAListeSommets.size())
+	{
+		uiBoucle++;
+	}
+	return uiBoucle;
+}
