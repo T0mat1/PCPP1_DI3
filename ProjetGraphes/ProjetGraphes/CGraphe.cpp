@@ -56,7 +56,6 @@ void CGraphe::GRAAfficherGraphe()
 
 inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
 {
-	unsigned int uiBoucle;
 	for (unsigned int uiBoucle = 0; uiBoucle < vGRAListeSommets.size(); uiBoucle++) {
 		if (vGRAListeSommets[uiBoucle].SOMLireNumero == uiNumero) {
 			return vGRAListeSommets[uiBoucle];
