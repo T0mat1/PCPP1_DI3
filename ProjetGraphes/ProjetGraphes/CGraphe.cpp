@@ -53,7 +53,8 @@ void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
 
 void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiNouvelleDestination)
 {
-
+	GRATrouverSommet(uiDepart).SOMRecupererArcPartant(uiDestination).ARCModifierDestination(uiNouvelleDestination);
+	GRATrouverSommet(uiDestination).SOMSupprimerArcArrivant(GRATrouverSommet(uiDepart).SOMRecupererArcPartant(uiDestination));
 }
 /*
 void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
@@ -64,7 +65,7 @@ void CGraphe::GRAAfficherGraphe()
 inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
 {
 	for (unsigned int uiBoucle = 0; uiBoucle < vGRAListeSommets.size(); uiBoucle++) {
-		if (vGRAListeSommets[uiBoucle].SOMLireNumero == uiNumero) {
+		if (vGRAListeSommets[uiBoucle].SOMLireNumero() == uiNumero) {
 			return vGRAListeSommets[uiBoucle];
 		}
 	}
@@ -74,7 +75,7 @@ inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
 inline bool CGraphe::GRAExisteSommet(unsigned int uiNumero)
 {
 	for (unsigned int uiBoucle = 0; uiBoucle < vGRAListeSommets.size(); uiBoucle++) {
-		if (vGRAListeSommets[uiBoucle].SOMLireNumero == uiNumero) {
+		if (vGRAListeSommets[uiBoucle].SOMLireNumero() == uiNumero) {
 			return true;
 		}
 	}
