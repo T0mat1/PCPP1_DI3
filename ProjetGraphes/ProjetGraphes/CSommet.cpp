@@ -16,24 +16,24 @@ CSommet::~CSommet(void)
 {
 }
 
-void CSommet::SOMAjouterArcArrivant(CArc ARCParam)
+void CSommet::SOMAjouterArcArrivant(CArc * pARCParam)
 {
-	vSOMArrivants.push_back(ARCParam);
+	vSOMArrivants.push_back(pARCParam);
 }
 
-void CSommet::SOMAjouterArcPartant(CArc ARCParam)
+void CSommet::SOMAjouterArcPartant(CArc * pARCParam)
 {
-	vSOMPartants.push_back(ARCParam);
+	vSOMPartants.push_back(pARCParam);
 }
 
-void CSommet::SOMSupprimerArcArrivant(CArc ARCParam)
+void CSommet::SOMSupprimerArcArrivant(CArc * pARCParam)
 {
-	vSOMArrivants.erase(remove(vSOMArrivants.begin(), vSOMArrivants.end(), ARCParam), vSOMArrivants.end());
+	vSOMArrivants.erase(remove(vSOMArrivants.begin(), vSOMArrivants.end(), pARCParam), vSOMArrivants.end());
 }
 
-void CSommet::SOMSupprimerArcPartant(CArc ARCParam)
+void CSommet::SOMSupprimerArcPartant(CArc * pARCParam)
 {
-	vSOMPartants.erase(remove(vSOMPartants.begin(), vSOMPartants.end(), ARCParam), vSOMPartants.end());
+	vSOMPartants.erase(remove(vSOMPartants.begin(), vSOMPartants.end(), pARCParam), vSOMPartants.end());
 }
 
 inline unsigned int CSommet::SOMLireNumero()

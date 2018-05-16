@@ -12,8 +12,8 @@ class CSommet
 	// ----------------------------------------------- Attributs ----------------------------------------------- 
 private:
 	unsigned int uiSOMNumero;
-	std::vector<CArc> vSOMArrivants;
-	std::vector<CArc> vSOMPartants;
+	std::vector<CArc*> vSOMArrivants;
+	std::vector<CArc*> vSOMPartants;
 
 	// ----------------------------------------------- Constructeurs et destructeur ----------------------------------------------- 
 private:
@@ -47,38 +47,38 @@ public:
 	*************************************************************************************************/
 
 	// ----------------------------------------------- Méthodes ----------------------------------------------- 
-	void SOMAjouterArcArrivant(CArc ARCParam);
+	void SOMAjouterArcArrivant(CArc * pARCParam);
 	/*************************************************************************************************
 	*** Methode d'ajout d'un arc arrivant														   ***
 	**************************************************************************************************
-	*** E : ARCParam ; un arc arrivant															   ***
+	*** E : pARCParam ; un arc pointeur sur un arrivant											   ***
 	*** nécessite : néant																		   ***
 	*** S : néant																				   ***
 	*** entraine : ajout de l'arc ARCParam au vecteur d'arc arrivants							   ***
 	*************************************************************************************************/
-	void SOMAjouterArcPartant(CArc ARCParam);
+	void SOMAjouterArcPartant(CArc * pARCParam);
 	/*************************************************************************************************
 	*** Methode d'ajout d'un arc partant														   ***
 	**************************************************************************************************
-	*** E : ARCParam ; un arc partant															   ***
+	*** E : pARCParam ; un pointeur sur un arc partant											   ***
 	*** nécessite : néant																		   ***
 	*** S : néant																				   ***
 	*** entraine : ajout de l'arc ARCParam au vecteur d'arc partants							   ***
 	*************************************************************************************************/
-	void SOMSupprimerArcArrivant(CArc ARCParam);
+	void SOMSupprimerArcArrivant(CArc * pARCParam);
 	/*************************************************************************************************
 	*** Methode de suppression d'un arc arrivant												   ***
 	**************************************************************************************************
-	*** E : ARCParam ; un arc arrivant															   ***
+	*** E : pARCParam ; un pointeur sur un arc arrivant											   ***
 	*** nécessite : néant																		   ***
 	*** S : néant																				   ***
 	*** entraine : suppression de l'arc ARCParam du vecteur d'arc arrivants						   ***
 	*************************************************************************************************/
-	void SOMSupprimerArcPartant(CArc ARCParam);
+	void SOMSupprimerArcPartant(CArc * pARCParam);
 	/*************************************************************************************************
 	*** Methode de suppression d'un arc partant													   ***
 	**************************************************************************************************
-	*** E : ARCParam ; un arc partant															   ***
+	*** E : pARCParam ; un pointeur sur un arc partant											   ***
 	*** nécessite : néant																		   ***
 	*** S : néant																				   ***
 	*** entraine : suppression de l'arc ARCParam du vecteur d'arc partants						   ***
