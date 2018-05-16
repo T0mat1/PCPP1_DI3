@@ -1,5 +1,6 @@
 #include "CGraphe.h"
 #include "CSommet.h"
+#include <iostream>
 
 #define SOMMET_DEJA_EXISTANT 1001
 #define SOMMET_INEXISTANT 1002
@@ -23,27 +24,22 @@ CGraphe::~CGraphe(void)
 
 void CGraphe::GRAAjouterSommet(unsigned int uiNumero)
 {
-	if (uiGRANbSommets == 0)
-	{
-		vGRAListeSommets.push_back(*(new CSommet(uiNumero)));
-	}
-	else
-	{
-		vGRAListeSommets.insert(vGRAListeSommets.begin() + GRATrouverIndiceSommet(uiNumero), *(new CSommet(uiNumero)));
-	}
+	vGRAListeSommets.push_back(CSommet(uiNumero));
 	uiGRANbSommets++;
 
 }
 
 void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
 {
-	/*
-	if (uiGRANbSommets ==0)
-		// throw exception
-	else
-	*/
-	vGRAListeSommets.erase(vGRAListeSommets.begin() + GRATrouverIndiceSommet(uiNumero));
-	uiGRANbSommets--;
+	try	{
+		CSommet SOMTemp = GRATrouverSommet(uiNumero);
+		vGRAListeSommets.erase(remove(vGRAListeSommets.begin(), vGRAListeSommets.end(), SOMTemp), vGRAListeSommets.end());
+		uiGRANbSommets--;
+	}
+	catch (CExceptions e)
+	{
+		std::cerr << "Exception levée - ID" << e.EXCLireValeur() << std::endl;
+	}
 }
 
 void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
@@ -58,12 +54,13 @@ void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
 void CGraphe::GRAAfficherGraphe()
 */
 
-inline unsigned int CGraphe::GRATrouverIndiceSommet(unsigned int uiNumero)
+inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
 {
 	unsigned int uiBoucle;
-	while (vGRAListeSommets[uiBoucle].SOMLireNumero() < uiNumero && uiBoucle < vGRAListeSommets.size())
-	{
-		uiBoucle++;
+	for (unsigned int uiBoucle = 0; uiBoucle < vGRAListeSommets.size(); uiBoucle++) {
+		if (vGRAListeSommets[uiBoucle].SOMLireNumero == uiNumero) {
+			return vGRAListeSommets[uiBoucle];
+		}
 	}
-	return uiBoucle;
+	throw new CExceptions(1002);
 }

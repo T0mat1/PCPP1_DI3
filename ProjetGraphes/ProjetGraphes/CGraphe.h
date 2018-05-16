@@ -16,6 +16,7 @@ private:
 	unsigned int uiGRANbArc;
 	unsigned int uiGRANbSommets;
 	std::vector<CSommet> vGRAListeSommets;
+	std::vector<CArc> vGRAListeArcs;
 
 public:
 
@@ -111,7 +112,7 @@ public:
 	*****************************************************************************/
 
 private:
-	inline unsigned int GRATrouverIndiceSommet(unsigned int uiNumero);
+	inline CSommet GRATrouverSommet(unsigned int uiNumero);
 	/*****************************************************************************
 	*** Méthode retournant l'indice d'un sommet								   ***
 	******************************************************************************
