@@ -48,7 +48,10 @@ void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
 
 void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
 {
-	//TODO
+	CArc * pARCNouvelArc = new CArc(uiDestination);
+	vGRAListeSommets.at(GRATrouverIndiceSommet(uiDepart)).SOMAjouterArcPartant(pARCNouvelArc);
+	vGRAListeSommets.at(GRATrouverIndiceSommet(uiDestination)).SOMAjouterArcArrivant(pARCNouvelArc);
+	uiGRANbArc++;
 }
 /*
 void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiNouvelleDestination)
@@ -60,7 +63,7 @@ void CGraphe::GRAAfficherGraphe()
 
 inline unsigned int CGraphe::GRATrouverIndiceSommet(unsigned int uiNumero)
 {
-	unsigned int uiBoucle;
+	unsigned int uiBoucle = 0;
 	while (vGRAListeSommets[uiBoucle].SOMLireNumero() < uiNumero && uiBoucle < vGRAListeSommets.size())
 	{
 		uiBoucle++;
