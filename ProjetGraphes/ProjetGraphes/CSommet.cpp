@@ -45,3 +45,8 @@ inline void CSommet::SOMModifierNumero(unsigned int uiParam)
 {
 	uiSOMNumero = uiParam;
 }
+
+CArc CSommet::SOMRecupererArcPartant(unsigned int uiDestination)
+{
+
+}

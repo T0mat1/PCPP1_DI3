@@ -95,13 +95,15 @@ public:
 	*************************************************************************************************/
 	inline void SOMModifierNumero(unsigned int uiParam);
 	/*************************************************************************************************
-	*** Accesseur en ecriture de uiSOMNumero														   ***
+	*** Accesseur en ecriture de uiSOMNumero													   ***
 	**************************************************************************************************
 	*** E : uiParam																				   ***
 	*** nécessite : néant																		   ***
 	*** S : néant																				   ***
 	*** entraine : Modifie uiSOMNumero	 														   ***
 	*************************************************************************************************/
+
+	CArc SOMRecupererArcPartant(unsigned int uiDestination);
 };
 
 #endif

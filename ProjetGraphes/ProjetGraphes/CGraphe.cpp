@@ -1,6 +1,7 @@
 #include "CGraphe.h"
 #include "CSommet.h"
 #include <iostream>
+#include <algorithm>
 
 #define SOMMET_DEJA_EXISTANT 1001
 #define SOMMET_INEXISTANT 1002
@@ -24,9 +25,12 @@ CGraphe::~CGraphe(void)
 
 void CGraphe::GRAAjouterSommet(unsigned int uiNumero)
 {
-	vGRAListeSommets.push_back(CSommet(uiNumero));
-	uiGRANbSommets++;
-
+	if (!GRAExisteSommet(uiNumero)) {
+		vGRAListeSommets.push_back(CSommet(uiNumero));
+		uiGRANbSommets++;
+	} else {
+		throw new CExceptions(1001);
+	}
 }
 
 void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
@@ -35,19 +39,22 @@ void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
 		CSommet SOMTemp = GRATrouverSommet(uiNumero);
 		vGRAListeSommets.erase(remove(vGRAListeSommets.begin(), vGRAListeSommets.end(), SOMTemp), vGRAListeSommets.end());
 		uiGRANbSommets--;
-	}
-	catch (CExceptions e)
-	{
+	} catch (CExceptions e) {
 		std::cerr << "Exception levée - ID" << e.EXCLireValeur() << std::endl;
 	}
 }
 
 void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
 {
-	//TODO
+	CArc ARCTemp = CArc(uiDestination);
+	GRATrouverSommet(uiDepart).SOMAjouterArcPartant(ARCTemp);
+	GRATrouverSommet(uiDestination).SOMAjouterArcArrivant(ARCTemp);
 }
-/*
+
 void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiNouvelleDestination)
+{
+
+}
 /*
 void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
 /*
@@ -62,4 +69,14 @@ inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
 		}
 	}
 	throw new CExceptions(1002);
+}
+
+inline bool CGraphe::GRAExisteSommet(unsigned int uiNumero)
+{
+	for (unsigned int uiBoucle = 0; uiBoucle < vGRAListeSommets.size(); uiBoucle++) {
+		if (vGRAListeSommets[uiBoucle].SOMLireNumero == uiNumero) {
+			return true;
+		}
+	}
+	return false;
 }

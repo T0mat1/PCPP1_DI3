@@ -116,12 +116,21 @@ private:
 	/*****************************************************************************
 	*** Méthode retournant l'indice d'un sommet								   ***
 	******************************************************************************
-	*** E : uiIndice : unsigned int											   ***
+	*** E : uiNumero : unsigned int											   ***
 	*** nécessite : néant													   ***
-	*** S : uhnisgned int : l'indice du CSommet	de numéro uiNumero			   ***
+	*** S : unsigned int : l'indice du CSommet de numéro uiNumero			   ***
 	*** entraine : néant													   ***
 	*****************************************************************************/
 
+	inline bool GRAExisteSommet(unsigned int uiNumero);
+	/*****************************************************************************
+	*** Méthode verifiant l'existance d'un sommet							   ***
+	******************************************************************************
+	*** E : uiNumero : unsigned int											   ***
+	*** nécessite : néant													   ***
+	*** S : bool : vrai si le sommet existe, sinon faux						   ***
+	*** entraine : néant													   ***
+	*****************************************************************************/
 };
 
 
