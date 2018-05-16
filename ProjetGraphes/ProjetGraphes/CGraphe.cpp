@@ -29,7 +29,7 @@ void CGraphe::GRAAjouterSommet(unsigned int uiNumero)
 		vGRAListeSommets.push_back(CSommet(uiNumero));
 		uiGRANbSommets++;
 	} else {
-		throw new CExceptions(1001);
+		throw new CExceptions(SOMMET_DEJA_EXISTANT);
 	}
 }
 
@@ -68,7 +68,7 @@ inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
 			return vGRAListeSommets[uiBoucle];
 		}
 	}
-	throw new CExceptions(1002);
+	throw new CExceptions(SOMMET_INEXISTANT);
 }
 
 inline bool CGraphe::GRAExisteSommet(unsigned int uiNumero)
