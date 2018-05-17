@@ -93,17 +93,15 @@ public:
 	*** S : uiSOMNumero																			   ***
 	*** entraine : Renvoie uiSOMNumero		 													   ***
 	*************************************************************************************************/
-	inline void SOMModifierNumero(unsigned int uiParam);
-	/*************************************************************************************************
-	*** Accesseur en ecriture de uiSOMNumero													   ***
-	**************************************************************************************************
-	*** E : uiParam																				   ***
-	*** nécessite : néant																		   ***
-	*** S : néant																				   ***
-	*** entraine : Modifie uiSOMNumero	 														   ***
-	*************************************************************************************************/
-
 	CArc SOMRecupererArcPartant(unsigned int uiDestination);
+	/*************************************************************************************************
+	*** Accesseur en lecture d'un arc partant en particulier									   ***
+	**************************************************************************************************
+	*** E : uiDestination ; la destination de l'arc	partant voulu								   ***
+	*** nécessite : néant																		   ***
+	*** S : CArc ; l'arc partant voulu															   ***
+	*** entraine : Renvoie l'arc partant voulu 													   ***
+	*************************************************************************************************/
 };
 
 #endif

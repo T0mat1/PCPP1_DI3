@@ -1,6 +1,10 @@
 #include "CSommet.h"
+#include "CExceptions.h"
 #include <algorithm>
 using namespace std;
+
+#define ARC_DEJA_EXISTANT 2001
+#define ARC_INEXISTANT 2002
 
 
 CSommet::CSommet(void)
@@ -9,7 +13,7 @@ CSommet::CSommet(void)
 
 CSommet::CSommet(unsigned int uiNumero)
 {
-	SOMModifierNumero(uiNumero);
+	uiSOMNumero = uiNumero;
 }
 
 CSommet::~CSommet(void)
@@ -41,12 +45,16 @@ inline unsigned int CSommet::SOMLireNumero()
 	return uiSOMNumero;
 }
 
-inline void CSommet::SOMModifierNumero(unsigned int uiParam)
-{
-	uiSOMNumero = uiParam;
-}
-
 CArc CSommet::SOMRecupererArcPartant(unsigned int uiDestination)
 {
-
+	std::for_each(vSOMPartants.begin(), vSOMPartants.end(),
+		[](CArc * partant, unsigned int uiDestination)
+	{
+		if (partant->ARCLireDestination() == uiDestination)
+		{
+			return partant;
+		}
+	}
+	);
+	throw new CExceptions(ARC_INEXISTANT);
 }
