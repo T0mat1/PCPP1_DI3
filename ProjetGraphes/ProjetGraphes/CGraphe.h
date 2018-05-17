@@ -16,7 +16,6 @@ private:
 	unsigned int uiGRANbArc;
 	unsigned int uiGRANbSommets;
 	std::vector<CSommet> vGRAListeSommets;
-	std::vector<CArc> vGRAListeArcs;
 
 public:
 
@@ -130,6 +129,17 @@ private:
 	*** nécessite : néant													   ***
 	*** S : bool : vrai si le sommet existe, sinon faux						   ***
 	*** entraine : néant													   ***
+	*****************************************************************************/
+
+	void GRATrierListeSommets();
+	/*****************************************************************************
+	*** Méthode de trie à bulle pour la liste de sommets					   ***
+	******************************************************************************
+	*** E : néant															   ***
+	*** nécessite : néant													   ***
+	*** S : néant															   ***
+	*** entraine : les sommets de vGRAListeSommets sont triés dans l'ordre	   ***
+	*** croissant en fonction de leurs numéros								   ***
 	*****************************************************************************/
 };
 
