@@ -53,7 +53,7 @@ void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
 
 void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiNouvelleDestination)
 {
-
+	GRATrouverSommet(uiDepart).
 }
 /*
 void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
