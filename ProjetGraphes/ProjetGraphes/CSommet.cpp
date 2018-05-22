@@ -58,3 +58,13 @@ CArc CSommet::SOMRecupererArcPartant(unsigned int uiDestination)
 	);
 	throw new CExceptions(ARC_INEXISTANT);
 }
+
+inline std::vector<CArc> CSommet::SOMRecupererArcsPartants()
+{
+	return vSOMPartants;
+}
+
+inline std::vector<CArc> CSommet::SOMRecupererArcsArrivants()
+{
+	return vSOMArrivants;
+}

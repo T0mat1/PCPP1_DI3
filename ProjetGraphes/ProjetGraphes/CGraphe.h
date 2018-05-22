@@ -141,6 +141,17 @@ private:
 	*** entraine : les sommets de vGRAListeSommets sont triés dans l'ordre	   ***
 	*** croissant en fonction de leurs numéros								   ***
 	*****************************************************************************/
+
+	void GRAInverserArcs();
+	/*****************************************************************************
+	*** Méthode qui inverse le sens de tous les arcs						   ***
+	******************************************************************************
+	*** E : néant															   ***
+	*** nécessite : néant													   ***
+	*** S : néant															   ***
+	*** entraine : les arcs partants deviennent les arcs arrivants			   ***
+	*** pour tous les sommets												   ***
+	*****************************************************************************/
 };
 
 

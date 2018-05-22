@@ -130,3 +130,13 @@ void CGraphe::GRATrierListeSommets()
 		iTaille--;
 	}
 }
+
+void CGraphe::GRAInverserArcs()
+{
+	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
+		for (unsigned int uiBoucleArc = 0; uiBoucleArc < vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().size(); uiBoucleArc++) {
+			vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCModifierDestination(vGRAListeSommets[uiBoucleSommet].SOMLireNumero());
+		}
+		vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().swap(vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsArrivants());
+	}
+}
