@@ -110,6 +110,17 @@ public:
 	*** entraine : affichage du graphe dans la console sous forme de matrice   ***
 	*****************************************************************************/
 
+	void GRAInverserArcs();
+	/*****************************************************************************
+	*** Méthode qui inverse le sens de tous les arcs						   ***
+	******************************************************************************
+	*** E : néant															   ***
+	*** nécessite : néant													   ***
+	*** S : néant															   ***
+	*** entraine : les arcs partants deviennent les arcs arrivants			   ***
+	*** pour tous les sommets												   ***
+	*****************************************************************************/
+
 private:
 	inline CSommet GRATrouverSommet(unsigned int uiNumero);
 	/*****************************************************************************
@@ -142,16 +153,6 @@ private:
 	*** croissant en fonction de leurs numéros								   ***
 	*****************************************************************************/
 
-	void GRAInverserArcs();
-	/*****************************************************************************
-	*** Méthode qui inverse le sens de tous les arcs						   ***
-	******************************************************************************
-	*** E : néant															   ***
-	*** nécessite : néant													   ***
-	*** S : néant															   ***
-	*** entraine : les arcs partants deviennent les arcs arrivants			   ***
-	*** pour tous les sommets												   ***
-	*****************************************************************************/
 };
 
 
