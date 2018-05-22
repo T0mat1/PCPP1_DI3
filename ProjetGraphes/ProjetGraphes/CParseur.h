@@ -8,8 +8,11 @@
 *** Classe de gestion du parseur ***
 ***********************************/
 
-#include "CGraphe.h"
+#include <iostream>
+#include <fstream>
 #include <string>
+#include "CGraphe.h"
+#include "CExceptions.h"
 
 class CParseur
 {

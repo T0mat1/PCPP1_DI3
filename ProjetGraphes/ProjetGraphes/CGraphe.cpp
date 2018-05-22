@@ -1,7 +1,4 @@
 #include "CGraphe.h"
-#include "CSommet.h"
-#include <iostream>
-#include <algorithm>
 
 #define SOMMET_DEJA_EXISTANT 1001
 #define SOMMET_INEXISTANT 1002
@@ -35,7 +32,7 @@ void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
 {
 	try	{
 		CSommet SOMTemp = GRATrouverSommet(uiNumero);
-		vGRAListeSommets.erase(remove(vGRAListeSommets.begin(), vGRAListeSommets.end(), SOMTemp), vGRAListeSommets.end());
+		vGRAListeSommets.erase(std::remove(vGRAListeSommets.begin(), vGRAListeSommets.end(), SOMTemp), vGRAListeSommets.end());
 		uiGRANbSommets--;
 	} catch (CExceptions EXCe) {
 		std::cerr << "Exception levée - ID" << EXCe.EXCLireValeur() << std::endl;
