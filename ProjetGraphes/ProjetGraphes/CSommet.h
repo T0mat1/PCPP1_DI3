@@ -84,7 +84,7 @@ public:
 	*** entraine : suppression de l'arc ARCParam du vecteur d'arc partants						   ***
 	*************************************************************************************************/
 	
-	inline unsigned int SOMLireNumero();
+	inline unsigned int SOMLireNumero() const;
 	/*************************************************************************************************
 	*** Accesseur en lecture de uiNumero														   ***
 	**************************************************************************************************
@@ -103,7 +103,7 @@ public:
 	*** entraine : Renvoie l'arc partant voulu 													   ***
 	*************************************************************************************************/
 	
-	inline std::vector<CArc> SOMRecupererArcsPartants();
+	inline std::vector<CArc> SOMRecupererArcsPartants() const;
 	/*************************************************************************************************
 	*** Accesseur en lecture de la liste d'arcs partants										   ***
 	**************************************************************************************************
@@ -113,7 +113,7 @@ public:
 	*** entraine : neant					 													   ***
 	*************************************************************************************************/
 	
-	inline std::vector<CArc> SOMRecupererArcsArrivants();
+	inline std::vector<CArc> SOMRecupererArcsArrivants() const;
 	/*************************************************************************************************
 	*** Accesseur en lecture de la liste d'arcs arrivants										   ***
 	**************************************************************************************************
@@ -123,7 +123,7 @@ public:
 	*** entraine : neant					 													   ***
 	*************************************************************************************************/
 
-	inline bool operator==(CSommet & SOMsommet);
+	bool operator==(const CSommet & SOMsommet) const;
 	/*************************************************************************************************
 	*** Surcharge de l'operateur de comparaison													   ***
 	**************************************************************************************************

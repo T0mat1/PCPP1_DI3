@@ -32,44 +32,40 @@ void CSommet::SOMAjouterArcPartant(CArc ARCParam)
 
 void CSommet::SOMSupprimerArcArrivant(CArc ARCParam)
 {
-	vSOMArrivants.erase(remove(vSOMArrivants.begin(), vSOMArrivants.end(), ARCParam), vSOMArrivants.end());
+	vSOMArrivants.erase(std::remove(vSOMArrivants.begin(), vSOMArrivants.end(), ARCParam), vSOMArrivants.end());
 }
 
 void CSommet::SOMSupprimerArcPartant(CArc ARCParam)
 {
-	vSOMPartants.erase(remove(vSOMPartants.begin(), vSOMPartants.end(), ARCParam), vSOMPartants.end());
+	vSOMPartants.erase(std::remove(vSOMPartants.begin(), vSOMPartants.end(), ARCParam), vSOMPartants.end());
 }
 
-inline unsigned int CSommet::SOMLireNumero()
+inline unsigned int CSommet::SOMLireNumero() const
 {
 	return uiSOMNumero;
 }
 
 CArc CSommet::SOMRecupererArcPartant(unsigned int uiDestination)
 {
-	std::for_each(vSOMPartants.begin(), vSOMPartants.end(),
-		[](CArc * partant, unsigned int uiDestination)
-	{
-		if (partant->ARCLireDestination() == uiDestination)
-		{
-			return partant;
+	for (unsigned int uiBoucle = 0; uiBoucle < SOMRecupererArcsArrivants().size(); uiBoucle++) {
+		if (SOMRecupererArcsArrivants()[uiBoucle].ARCLireDestination() == uiDestination) {
+			return SOMRecupererArcsArrivants()[uiBoucle];
 		}
 	}
-	);
 	throw new CExceptions(ARC_INEXISTANT);
 }
 
-inline std::vector<CArc> CSommet::SOMRecupererArcsPartants()
+inline std::vector<CArc> CSommet::SOMRecupererArcsPartants() const
 {
 	return vSOMPartants;
 }
 
-inline std::vector<CArc> CSommet::SOMRecupererArcsArrivants()
+inline std::vector<CArc> CSommet::SOMRecupererArcsArrivants() const
 {
 	return vSOMArrivants;
 }
 
-inline bool CSommet::operator==(CSommet & SOMsommet)
+bool CSommet::operator==(const CSommet & SOMsommet) const
 {
 	if (SOMsommet.SOMLireNumero() != SOMLireNumero() || SOMsommet.SOMRecupererArcsArrivants().size() != SOMRecupererArcsArrivants().size() || SOMsommet.SOMRecupererArcsPartants().size() != SOMRecupererArcsPartants().size()) {
 		return false;
@@ -86,4 +82,6 @@ inline bool CSommet::operator==(CSommet & SOMsommet)
 			return false;
 		}
 	}
+
+	return true;
 }

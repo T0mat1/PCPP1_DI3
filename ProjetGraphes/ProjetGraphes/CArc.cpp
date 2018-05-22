@@ -21,11 +21,12 @@ inline void CArc::ARCModifierDestination(unsigned int uiNouvelleDestination) {
 	uiARCDestination = uiARCDestination;
 }
 
-inline unsigned int CArc::ARCLireDestination() {
+inline unsigned int CArc::ARCLireDestination() const 
+{
 	return uiARCDestination;
 }
 
-bool CArc::operator==(CArc & ARCParam)
+bool CArc::operator==(const CArc & ARCParam) const
 {
 	return uiARCDestination == ARCParam.ARCLireDestination();
 }
