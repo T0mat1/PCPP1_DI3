@@ -2,7 +2,6 @@
 #define CGRAPHE_H 1
 
 #include <vector>
-#include "CArc.h"
 #include "CSommet.h"
 #include "CExceptions.h"
 

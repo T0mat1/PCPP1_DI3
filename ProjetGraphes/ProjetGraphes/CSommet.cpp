@@ -68,3 +68,22 @@ inline std::vector<CArc> CSommet::SOMRecupererArcsArrivants()
 {
 	return vSOMArrivants;
 }
+
+inline bool CSommet::operator==(CSommet & SOMsommet)
+{
+	if (SOMsommet.SOMLireNumero() != SOMLireNumero() || SOMsommet.SOMRecupererArcsArrivants().size() != SOMRecupererArcsArrivants().size() || SOMsommet.SOMRecupererArcsPartants().size() != SOMRecupererArcsPartants().size()) {
+		return false;
+	}
+
+	for (unsigned int uiBoucle = 0; uiBoucle < SOMRecupererArcsArrivants().size(); uiBoucle++) {
+		if (SOMsommet.SOMRecupererArcsArrivants()[uiBoucle].ARCLireDestination() != SOMRecupererArcsArrivants()[uiBoucle].ARCLireDestination()) {
+			return false;
+		}
+	}
+
+	for (unsigned int uiBoucle = 0; uiBoucle < SOMRecupererArcsPartants().size(); uiBoucle++) {
+		if (SOMsommet.SOMRecupererArcsPartants()[uiBoucle].ARCLireDestination() != SOMRecupererArcsPartants()[uiBoucle].ARCLireDestination()) {
+			return false;
+		}
+	}
+}
