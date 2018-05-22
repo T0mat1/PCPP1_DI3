@@ -81,15 +81,25 @@ void CGraphe::GRAAfficherGraphe()
 {
 	std::cout << "Graphe (" << uiGRANbSommets << "," << uiGRANbArc << ")\n" << std::endl;
 
+	for (unsigned int uiBoucleSommetArrivee = 0; uiBoucleSommetArrivee < vGRAListeSommets.size(); uiBoucleSommetArrivee++) {
+		std::cout << vGRAListeSommets[uiBoucleSommetArrivee].SOMLireNumero() << "\t";
+	}
+	std::cout << std::endl;
 	for (unsigned int uiBoucleSommetDepart = 0; uiBoucleSommetDepart < vGRAListeSommets.size(); uiBoucleSommetDepart++) {
+		std::cout << vGRAListeSommets[uiBoucleSommetDepart].SOMLireNumero() << "\t";
 		for (unsigned int uiBoucleSommetArrivee = 0; uiBoucleSommetArrivee < vGRAListeSommets.size(); uiBoucleSommetArrivee++) {
 			unsigned int uiBoucleArc = 0;
-/*			while (uiBoucleArc < vGRAListeSommets[uiBoucleSommetDepart]) {
-
-			}*/
+			while (uiBoucleArc < vGRAListeSommets[uiBoucleSommetDepart].SOMRecupererArcsPartants().size()) {
+				if (vGRAListeSommets[uiBoucleSommetDepart].SOMRecupererArcsPartants()[uiBoucleArc].ARCLireDestination() == vGRAListeSommets[uiBoucleSommetArrivee].SOMLireNumero()) {
+					std::cout << "1";
+					break;
+				}
+				std::cout << "0";
+			}
+			std::cout << "\t";
 		}
+		std::cout << std::endl;
 	}
-	//TODO: Afficher Matrice
 }
 
 inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
