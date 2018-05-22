@@ -17,7 +17,7 @@ CArc::~CArc(void)
 
 // ----------------------------------------------- Méthodes -----------------------------------------------
 
-inline void CArc::ARCModifierDestination(unsigned int uiNouvelleDestination)
+void CArc::ARCModifierDestination(unsigned int uiNouvelleDestination)
 {
 	uiARCDestination = uiNouvelleDestination;
 }

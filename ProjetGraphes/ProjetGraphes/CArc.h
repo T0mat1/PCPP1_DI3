@@ -46,7 +46,7 @@ public:
 
 	// ----------------------------------------------- Méthodes -----------------------------------------------
 
-	inline void ARCModifierDestination(unsigned int uiNouvelleDestination);
+	void ARCModifierDestination(unsigned int uiNouvelleDestination);
 	/*****************************************************************************************************
 	*** Accesseur en écriture de uiARCDestination													   ***
 	******************************************************************************************************
