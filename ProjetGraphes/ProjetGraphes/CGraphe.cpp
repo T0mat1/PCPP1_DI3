@@ -128,6 +128,6 @@ void CGraphe::GRAInverserArcs()
 		for (unsigned int uiBoucleArc = 0; uiBoucleArc < vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().size(); uiBoucleArc++) {
 			vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCModifierDestination(vGRAListeSommets[uiBoucleSommet].SOMLireNumero());
 		}
-		//TODO etape 2 (inverser les listes arcs arrivant et partant)
+		vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().swap(vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsArrivants());
 	}
 }
