@@ -1,6 +1,4 @@
 #include "CSommet.h"
-#include "CExceptions.h"
-#include <algorithm>
 using namespace std;
 
 #define ARC_DEJA_EXISTANT 2001

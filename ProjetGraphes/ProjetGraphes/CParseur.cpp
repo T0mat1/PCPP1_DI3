@@ -1,7 +1,4 @@
 #include "CParseur.h"
-#include "CExceptions.h"
-#include <iostream>
-#include <fstream>
 
 CParseur::CParseur(void)
 {

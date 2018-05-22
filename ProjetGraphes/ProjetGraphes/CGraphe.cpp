@@ -1,7 +1,4 @@
 #include "CGraphe.h"
-#include "CSommet.h"
-#include <iostream>
-#include <algorithm>
 
 #define SOMMET_DEJA_EXISTANT 1001
 #define SOMMET_INEXISTANT 1002

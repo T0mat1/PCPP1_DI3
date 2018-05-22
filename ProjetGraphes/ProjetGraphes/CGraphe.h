@@ -2,6 +2,9 @@
 #define CGRAPHE_H 1
 
 #include <vector>
+#include <iostream>
+#include <algorithm>
+#include "CArc.h"
 #include "CSommet.h"
 #include "CExceptions.h"
 

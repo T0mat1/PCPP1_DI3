@@ -2,7 +2,9 @@
 #define CSOMMET_H 1
 
 #include <vector>
+#include <algorithm>
 #include "CArc.h"
+#include "CExceptions.h"
 
 /***********************************
 *** Classe de gestion d'un sommet***
