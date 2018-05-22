@@ -80,6 +80,15 @@ void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
 void CGraphe::GRAAfficherGraphe()
 {
 	std::cout << "Graphe (" << uiGRANbSommets << "," << uiGRANbArc << ")\n" << std::endl;
+
+	for (unsigned int uiBoucleSommetDepart = 0; uiBoucleSommetDepart < vGRAListeSommets.size(); uiBoucleSommetDepart++) {
+		for (unsigned int uiBoucleSommetArrivee = 0; uiBoucleSommetArrivee < vGRAListeSommets.size(); uiBoucleSommetArrivee++) {
+			unsigned int uiBoucleArc = 0;
+/*			while (uiBoucleArc < vGRAListeSommets[uiBoucleSommetDepart]) {
+
+			}*/
+		}
+	}
 	//TODO: Afficher Matrice
 }
 
