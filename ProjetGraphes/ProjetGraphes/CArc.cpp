@@ -24,3 +24,8 @@ inline void CArc::ARCModifierDestination(unsigned int uiNouvelleDestination) {
 inline unsigned int CArc::ARCLireDestination() {
 	return uiARCDestination;
 }
+
+bool CArc::operator==(CArc & ARCParam)
+{
+	return uiARCDestination == ARCParam.ARCLireDestination();
+}
