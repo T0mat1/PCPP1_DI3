@@ -71,7 +71,7 @@ public:
 	*** surcharge de l'operateur ==																	   ***
 	******************************************************************************************************
 	*** E : Une référence à un CArc																	   ***
-	*** nécessite : néant																			   ***
+	*** nécessite : Comparer des CArcs provenants du même sommet									   ***
 	*** S : un booléen : vaut true si les CArcs pointent vers le même sommet, false sinon			   ***
 	*** entraine : néant																			   ***
 	*****************************************************************************************************/
