@@ -40,7 +40,11 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 
 		for(unsigned int uiBoucleLigne = 0; uiBoucleLigne < uiNBSommets; uiBoucleLigne++) {
 			std::getline(input, sLigne);
-			tmpGraphe->GRAAjouterSommet(std::stoi(sLigne));
+			try {
+				tmpGraphe->GRAAjouterSommet(std::stoi(sLigne));
+			} catch (CExceptions EXCe) {
+				std::cerr << "Exception levée - ID" << EXCe.EXCLireValeur() << std::endl;
+			}
 		}
 
 		std::getline(input, sLigne);
@@ -48,7 +52,7 @@ CGraphe* CParseur::PARLireFichier(std::string sNomFichier)
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		}
 
-				std::getline(input, sLigne);
+		std::getline(input, sLigne);
 		if (sLigne.find("Arcs=[")==std::string::npos) {
 			throw new CExceptions(CORRUPTED_FILE_EXCEPTION);
 		}
