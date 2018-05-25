@@ -124,7 +124,7 @@ public:
 	*****************************************************************************/
 
 private:
-	inline CSommet GRATrouverSommet(unsigned int uiNumero);
+	inline CSommet & GRATrouverSommet(unsigned int uiNumero);
 	/*****************************************************************************
 	*** Méthode retournant l'indice d'un sommet								   ***
 	******************************************************************************

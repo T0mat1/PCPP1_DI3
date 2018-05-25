@@ -44,6 +44,7 @@ void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
 	CArc ARCTemp = CArc(uiDestination);
 	GRATrouverSommet(uiDepart).SOMAjouterArcPartant(ARCTemp);
 	GRATrouverSommet(uiDestination).SOMAjouterArcArrivant(ARCTemp);
+	uiGRANbArc++;
 }
 
 void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiNouvelleDestination)
@@ -76,30 +77,16 @@ void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
 
 void CGraphe::GRAAfficherGraphe()
 {
-	std::cout << "Graphe (" << uiGRANbSommets << "," << uiGRANbArc << ")\n" << std::endl;
+	std::cout << "Graphe (" << uiGRANbSommets << "," << uiGRANbArc << ")" << std::endl;
 
-	for (unsigned int uiBoucleSommetArrivee = 0; uiBoucleSommetArrivee < vGRAListeSommets.size(); uiBoucleSommetArrivee++) {
-		std::cout << vGRAListeSommets[uiBoucleSommetArrivee].SOMLireNumero() << "\t";
-	}
-	std::cout << std::endl;
-	for (unsigned int uiBoucleSommetDepart = 0; uiBoucleSommetDepart < vGRAListeSommets.size(); uiBoucleSommetDepart++) {
-		std::cout << vGRAListeSommets[uiBoucleSommetDepart].SOMLireNumero() << "\t";
-		for (unsigned int uiBoucleSommetArrivee = 0; uiBoucleSommetArrivee < vGRAListeSommets.size(); uiBoucleSommetArrivee++) {
-			unsigned int uiBoucleArc = 0;
-			while (uiBoucleArc < vGRAListeSommets[uiBoucleSommetDepart].SOMRecupererArcsPartants().size()) {
-				if (vGRAListeSommets[uiBoucleSommetDepart].SOMRecupererArcsPartants()[uiBoucleArc].ARCLireDestination() == vGRAListeSommets[uiBoucleSommetArrivee].SOMLireNumero()) {
-					std::cout << "1";
-					break;
-				}
-				std::cout << "0";
-			}
-			std::cout << "\t";
+	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
+		for (unsigned int uiBoucleArc = 0; uiBoucleArc < vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().size(); uiBoucleArc++) {
+			std::cout << vGRAListeSommets[uiBoucleSommet].SOMLireNumero() << "-->" << vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCLireDestination() << std::endl;
 		}
-		std::cout << std::endl;
 	}
 }
 
-inline CSommet CGraphe::GRATrouverSommet(unsigned int uiNumero)
+inline CSommet & CGraphe::GRATrouverSommet(unsigned int uiNumero)
 {
 	for (unsigned int uiBoucle = 0; uiBoucle < vGRAListeSommets.size(); uiBoucle++) {
 		if (vGRAListeSommets[uiBoucle].SOMLireNumero() == uiNumero) {
