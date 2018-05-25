@@ -95,7 +95,7 @@ public:
 	*** S : uiSOMNumero																			   ***
 	*** entraine : Renvoie uiSOMNumero		 													   ***
 	*************************************************************************************************/
-	CArc SOMRecupererArcPartant(unsigned int uiDestination);
+	CArc & SOMRecupererArcPartant(unsigned int uiDestination);
 	/*************************************************************************************************
 	*** Accesseur en lecture d'un arc partant en particulier									   ***
 	**************************************************************************************************

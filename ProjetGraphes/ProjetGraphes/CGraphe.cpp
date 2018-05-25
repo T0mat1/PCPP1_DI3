@@ -127,10 +127,15 @@ void CGraphe::GRATrierListeSommets()
 
 void CGraphe::GRAInverserArcs()
 {
+	unsigned int uiNumTmp;
+	std::vector<CArc> vArcsPartantsTmp;
+	//todo : fix this shit
 	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
+		uiNumTmp = vGRAListeSommets[uiBoucleSommet].SOMLireNumero();
+		vArcsPartantsTmp = vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants();
 		for (unsigned int uiBoucleArc = 0; uiBoucleArc < vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().size(); uiBoucleArc++) {
-			vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCModifierDestination(vGRAListeSommets[uiBoucleSommet].SOMLireNumero());
+			vArcsPartantsTmp[uiBoucleArc].ARCModifierDestination(uiNumTmp);
 		}
-		vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().swap(vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsArrivants());
+		vArcsPartantsTmp.swap(vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsArrivants());
 	}
 }

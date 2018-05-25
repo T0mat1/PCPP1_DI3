@@ -43,7 +43,7 @@ inline unsigned int CSommet::SOMLireNumero() const
 	return uiSOMNumero;
 }
 
-CArc CSommet::SOMRecupererArcPartant(unsigned int uiDestination)
+CArc & CSommet::SOMRecupererArcPartant(unsigned int uiDestination)
 {
 	for (unsigned int uiBoucle = 0; uiBoucle < SOMRecupererArcsArrivants().size(); uiBoucle++) {
 		if (SOMRecupererArcsArrivants()[uiBoucle].ARCLireDestination() == uiDestination) {
