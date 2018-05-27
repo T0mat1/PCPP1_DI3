@@ -112,7 +112,7 @@ public:
 	*** entraine : affichage du graphe dans la console sous forme de matrice   ***
 	*****************************************************************************/
 
-	void GRAInverserArcs();
+	CGraphe * GRAInverserArcs();
 	/*****************************************************************************
 	*** Méthode qui inverse le sens de tous les arcs						   ***
 	******************************************************************************
@@ -155,6 +155,7 @@ private:
 	*** croissant en fonction de leurs numéros								   ***
 	*****************************************************************************/
 
+	CSommet * CGraphe::GRARecupererSommetAtIndex(unsigned int uiIndex);
 };
 
 

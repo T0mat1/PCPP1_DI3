@@ -58,9 +58,29 @@ inline std::vector<CArc> CSommet::SOMRecupererArcsPartants() const
 	return vSOMPartants;
 }
 
+std::vector<CArc> * CSommet::SOMRecupererAdresseArcsPartants()
+{
+	return &vSOMPartants;
+}
+
 inline std::vector<CArc> CSommet::SOMRecupererArcsArrivants() const
 {
 	return vSOMArrivants;
+}
+
+std::vector<CArc> * CSommet::SOMRecupererAdresseArcsArrivants()
+{
+	return &vSOMArrivants;
+}
+
+CArc * CSommet::SOMRecupererArcPartantAtIndex(unsigned int uiIndex)
+{
+	return &vSOMPartants[uiIndex];
+}
+
+CArc * CSommet::SOMRecupererArcArrivantAtIndex(unsigned int uiIndex)
+{
+	return &vSOMArrivants[uiIndex];
 }
 
 bool CSommet::operator==(const CSommet & SOMsommet) const
@@ -82,4 +102,9 @@ bool CSommet::operator==(const CSommet & SOMsommet) const
 	}
 
 	return true;
+}
+
+void CSommet::SOMSwapListes()
+{
+	vSOMPartants.swap(vSOMArrivants);
 }

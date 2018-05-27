@@ -134,6 +134,56 @@ public:
 	*** S : un boolean ; vrai si les CSommets sont identiques, faux sinon						   ***
 	*** entraine : neant					 													   ***
 	*************************************************************************************************/
+
+	CArc * SOMRecupererArcPartantAtIndex(unsigned int uiIndex);
+	/*************************************************************************************************
+	*** Modificateur d'un arc partant															   ***
+	**************************************************************************************************
+	*** E : uiIndex, l'emplacement de mon arc dans la liste d'arcs partants						   ***
+	*** nécessite : néant																		   ***
+	*** S : un pointeur vers un arc																   ***
+	*** entraine : neant					 													   ***
+	*************************************************************************************************/
+
+	CArc * SOMRecupererArcArrivantAtIndex(unsigned int uiIndex);
+	/*************************************************************************************************
+	*** Modificateur d'un arc arrivant															   ***
+	**************************************************************************************************
+	*** E : uiIndex, l'emplacement de mon arc dans la liste d'arcs arrivants					   ***
+	*** nécessite : néant																		   ***
+	*** S : un pointeur vers un arc																   ***
+	*** entraine : neant					 													   ***
+	*************************************************************************************************/
+
+	std::vector<CArc> * SOMRecupererAdresseArcsPartants();
+	/*************************************************************************************************
+	*** Modificateur de la list d'arcs partants													   ***
+	**************************************************************************************************
+	*** E : néant																				   ***
+	*** nécessite : néant																		   ***
+	*** S : un pointeur vers la liste d'arcs partants											   ***
+	*** entraine : neant					 													   ***
+	*************************************************************************************************/
+
+	std::vector<CArc> * SOMRecupererAdresseArcsArrivants();
+	/*************************************************************************************************
+	*** Modificateur de la list d'arcs arrivants												   ***
+	**************************************************************************************************
+	*** E : néant																				   ***
+	*** nécessite : néant																		   ***
+	*** S : un pointeur vers la liste d'arcs arrivants											   ***
+	*** entraine : neant					 													   ***
+	*************************************************************************************************/
+
+	void SOMSwapListes();
+	/*************************************************************************************************
+	*** Echange la liste d'arcs partants avec la liste d'arcs arrivants							   ***
+	**************************************************************************************************
+	*** E : néant																				   ***
+	*** nécessite : néant																		   ***
+	*** S : néant																				   ***
+	*** entraine : swap des deux vectors					 									   ***
+	*************************************************************************************************/
 };
 
 #endif

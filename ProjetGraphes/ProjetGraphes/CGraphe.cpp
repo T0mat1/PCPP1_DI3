@@ -125,17 +125,22 @@ void CGraphe::GRATrierListeSommets()
 	}
 }
 
-void CGraphe::GRAInverserArcs()
+CSommet * CGraphe::GRARecupererSommetAtIndex(unsigned int uiIndex)
 {
-	unsigned int uiNumTmp;
-	std::vector<CArc> vArcsPartantsTmp;
-	//todo : fix this shit
+	return &vGRAListeSommets[uiIndex];
+}
+
+CGraphe * CGraphe::GRAInverserArcs()
+{
+	CGraphe * graTmp = new CGraphe();
 	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
-		uiNumTmp = vGRAListeSommets[uiBoucleSommet].SOMLireNumero();
-		vArcsPartantsTmp = vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants();
-		for (unsigned int uiBoucleArc = 0; uiBoucleArc < vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().size(); uiBoucleArc++) {
-			vArcsPartantsTmp[uiBoucleArc].ARCModifierDestination(uiNumTmp);
-		}
-		vArcsPartantsTmp.swap(vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsArrivants());
+		graTmp->GRAAjouterSommet(GRARecupererSommetAtIndex(uiBoucleSommet)->SOMLireNumero());
 	}
+	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
+		for (unsigned int uiBoucleArc = 0; uiBoucleArc < GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcsPartants().size(); uiBoucleArc++) {
+			graTmp->GRAAjouterArc(GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcPartantAtIndex(uiBoucleArc)->ARCLireDestination(), GRARecupererSommetAtIndex(uiBoucleSommet)->SOMLireNumero());
+		}
+	}
+
+	return graTmp;
 }
