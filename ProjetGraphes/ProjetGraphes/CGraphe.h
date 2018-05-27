@@ -118,7 +118,7 @@ public:
 	******************************************************************************
 	*** E : néant															   ***
 	*** nécessite : néant													   ***
-	*** S : néant															   ***
+	*** S : un graphe inverse												   ***
 	*** entraine : les arcs partants deviennent les arcs arrivants			   ***
 	*** pour tous les sommets												   ***
 	*****************************************************************************/
@@ -156,6 +156,14 @@ private:
 	*****************************************************************************/
 
 	CSommet * CGraphe::GRARecupererSommetAtIndex(unsigned int uiIndex);
+	/*****************************************************************************
+	*** Modificateur d'un sommet											   ***
+	/*****************************************************************************
+	*** E : uiIndex, l'emplacement de mon sommet dans la liste				   ***
+	*** nécessite : néant													   ***
+	*** S : un pointeur vers un sommet										   ***
+	*** entraine : neant					 								   ***
+	/****************************************************************************/
 };
 
 
