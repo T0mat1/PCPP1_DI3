@@ -9,13 +9,6 @@ CArc::CArc(void)
 CArc::CArc(unsigned int uiNouvelleDestination)
 {
 	uiARCDestination = uiNouvelleDestination;
-	uiARCPoids = 1;
-}
-
-CArc::CArc(unsigned int uiNouvelleDestination, unsigned int uiPoids)
-{
-	uiARCDestination = uiNouvelleDestination;
-	uiARCPoids = uiPoids;
 }
 
 CArc::~CArc(void)
@@ -36,15 +29,5 @@ inline unsigned int CArc::ARCLireDestination() const
 
 bool CArc::operator==(const CArc & ARCParam) const
 {
-	return (uiARCDestination == ARCParam.ARCLireDestination() && uiARCPoids == ARCParam.ARCLirePoids());
-}
-
-void CArc::ARCModifierPoids(unsigned int uiNouveauPoids)
-{
-	uiARCPoids = uiNouveauPoids;
-}
-
-inline unsigned int CArc::ARCLirePoids() const
-{
-	return uiARCPoids;
+	return uiARCDestination == ARCParam.ARCLireDestination();
 }

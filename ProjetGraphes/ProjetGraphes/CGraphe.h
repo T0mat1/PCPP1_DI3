@@ -67,13 +67,12 @@ public:
 	*** l'objet. Décrémente uiGRANbSommets. Renvoie une exception si le sommet n'existe pas	***
 	******************************************************************************************/
 
-	void GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiPoids);
+	void GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination);
 	/*****************************************************************************
 	*** Methode d'ajout d'un arc											   ***
 	******************************************************************************
 	*** E : uiDepart : unsigned int ; numéro du sommet de départ			   ***
 	*** uiDestination : unsigned int ; numéro du sommet de destination		   ***
-	*** uiPoids : unsigned int ; poids de l'arc								   ***
 	*** nécessite : néant													   ***
 	*** S : néant															   ***
 	*** entraine : création d'un nouvel arc	et incrémente uiGRANbArc		   ***
@@ -124,36 +123,6 @@ public:
 	*** pour tous les sommets												   ***
 	*****************************************************************************/
 
-	CGraphe * GRAExtraireArbreCouvrant();
-	/*****************************************************************************
-	*** Méthode extrayant l'arbre couvrant du graphe						   ***
-	*** à l'aide de l'algorithme de Prim									   ***
-	******************************************************************************
-	*** E : néant															   ***
-	*** nécessite : néant													   ***
-	*** S : Un graphe représentant l'arbre couvrant							   ***
-	*** entraine : néant													   ***
-	*****************************************************************************/
-
-	unsigned int GRALireNbSommets();
-	/*****************************************************************************************************
-	*** Accesseur en lecture de uiGRANbSommets														   ***
-	******************************************************************************************************
-	*** E : néant																					   ***
-	*** nécessite : néant																			   ***
-	*** S : la valeur de l'attribut uiGRANbSommets													   ***
-	*** entraine : néant																			   ***
-	*****************************************************************************************************/
-	unsigned int GRALireNbArcs();
-	/*****************************************************************************************************
-	*** Accesseur en lecture de uiGRANbArc															   ***
-	******************************************************************************************************
-	*** E : néant																					   ***
-	*** nécessite : néant																			   ***
-	*** S : la valeur de l'attribut uiGRANbArc														   ***
-	*** entraine : néant																			   ***
-	*****************************************************************************************************/
-
 private:
 	inline CSommet & GRATrouverSommet(unsigned int uiNumero);
 	/*****************************************************************************
@@ -186,7 +155,7 @@ private:
 	*** croissant en fonction de leurs numéros								   ***
 	*****************************************************************************/
 
-	CSommet * GRARecupererSommetAtIndex(unsigned int uiIndex);
+	CSommet * CGraphe::GRARecupererSommetAtIndex(unsigned int uiIndex);
 	/*****************************************************************************
 	*** Modificateur d'un sommet											   ***
 	/*****************************************************************************

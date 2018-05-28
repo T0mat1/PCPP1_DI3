@@ -39,9 +39,9 @@ void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
 	}
 }
 
-void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiPoids)
+void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
 {
-	CArc ARCTemp = CArc(uiDestination, uiPoids);
+	CArc ARCTemp = CArc(uiDestination);
 	GRATrouverSommet(uiDepart).SOMAjouterArcPartant(ARCTemp);
 	GRATrouverSommet(uiDestination).SOMAjouterArcArrivant(ARCTemp);
 	uiGRANbArc++;
@@ -81,7 +81,7 @@ void CGraphe::GRAAfficherGraphe()
 
 	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
 		for (unsigned int uiBoucleArc = 0; uiBoucleArc < vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().size(); uiBoucleArc++) {
-			std::cout << vGRAListeSommets[uiBoucleSommet].SOMLireNumero() << "-->" << vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCLireDestination() << " ; Poids = " << vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCLirePoids() << std::endl;
+			std::cout << vGRAListeSommets[uiBoucleSommet].SOMLireNumero() << "-->" << vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCLireDestination() << std::endl;
 		}
 	}
 }
@@ -138,34 +138,9 @@ CGraphe * CGraphe::GRAInverserArcs()
 	}
 	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
 		for (unsigned int uiBoucleArc = 0; uiBoucleArc < GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcsPartants().size(); uiBoucleArc++) {
-			graTmp->GRAAjouterArc(GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcPartantAtIndex(uiBoucleArc)->ARCLireDestination(), GRARecupererSommetAtIndex(uiBoucleSommet)->SOMLireNumero(), GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcPartantAtIndex(uiBoucleArc)->ARCLirePoids());
+			graTmp->GRAAjouterArc(GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcPartantAtIndex(uiBoucleArc)->ARCLireDestination(), GRARecupererSommetAtIndex(uiBoucleSommet)->SOMLireNumero());
 		}
 	}
 
 	return graTmp;
-}
-
-CGraphe * CGraphe::GRAExtraireArbreCouvrant()
-{
-
-	CGraphe	* pGRAArbre = new CGraphe();
-	for (unsigned int uiBoucleSommetCourant = 0; uiBoucleSommetCourant < uiGRANbSommets; uiBoucleSommetCourant++)
-	{
-		pGRAArbre->GRAAjouterSommet(vGRAListeSommets[uiBoucleSommetCourant].SOMLireNumero());
-
-		for (unsigned int uiBoucleSommetTmp = 0; uiBoucleSommetTmp < vGRAListeSommets.size(); uiBoucleSommetTmp++)
-		{
-
-		}
-	}
-}
-
-unsigned int CGraphe::GRALireNbSommets()
-{
-	return uiGRANbSommets;
-}
-
-unsigned int CGraphe::GRALireNbArcs()
-{
-	return uiGRANbArc;
 }

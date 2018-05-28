@@ -1,0 +1,113 @@
+#ifndef CARC_H
+#define CARC_H 1
+
+/***********************************
+*** Classe de gestion d'un arc   ***
+***********************************/
+class CArc
+{
+	// ----------------------------------------------- Attributs -----------------------------------------------
+
+private:
+	unsigned int uiARCDestination;
+	unsigned int uiARCPoids;
+
+	// ----------------------------------------------- Constructeurs et destructeur ----------------------------------------------- 
+
+	CArc(void);
+	/**********************************************
+	*** Constructeur par défaut                 ***
+	***********************************************
+	*** E : néant                               ***
+	*** nécessite : néant                       ***
+	*** S : néant                               ***
+	*** entraine : néant						***
+	**********************************************/
+
+public:
+	CArc(unsigned int uiNouvelleDestination);
+	/*****************************************************************************************************
+	*** Constructeur																				   ***
+	******************************************************************************************************
+	*** E : uiNouvelleDestination : unsigned int ; la nouvelle destination vers laquelle pointe l'arc. ***
+	*** nécessite : néant																			   ***
+	*** S : néant																					   ***
+	*** entraine : initialisation de l'arc. Par défaut avec un poids de 1.																			   ***
+	*****************************************************************************************************/
+
+	CArc(unsigned int uiNouvelleDestination, unsigned int uiPoids);
+	/*****************************************************************************************************
+	*** Constructeur																				   ***
+	******************************************************************************************************
+	*** E : uiNouvelleDestination : unsigned int ; la nouvelle destination vers laquelle pointe l'arc. ***
+	***		uiPoids : unsigned int ; le nouveau poids de l'arc.										   ***
+	*** nécessite : néant																			   ***
+	*** S : néant																					   ***
+	*** entraine : initialisation de l'arc.																			   ***
+	*****************************************************************************************************/
+
+	~CArc(void);
+	/**********************************************
+	*** Destructeur			                    ***
+	***********************************************
+	*** E : néant                               ***
+	*** nécessite : néant                       ***
+	*** S : néant                               ***
+	*** entraine : destruction de l'objet		***
+	**********************************************/
+
+	// ----------------------------------------------- Méthodes -----------------------------------------------
+
+	void ARCModifierDestination(unsigned int uiNouvelleDestination);
+	/*****************************************************************************************************
+	*** Accesseur en écriture de uiARCDestination													   ***
+	******************************************************************************************************
+	*** E : uiNouvelleDestination : unsigned int ; la nouvelle destination vers laquelle pointe l'arc. ***
+	*** nécessite : néant																			   ***
+	*** S : néant																					   ***
+	*** entraine : modification de l'attribut uiARCDestination										   ***
+	*****************************************************************************************************/
+
+	inline unsigned int ARCLireDestination() const;
+	/*****************************************************************************************************
+	*** Accesseur en lecture de uiARCDestination													   ***
+	******************************************************************************************************
+	*** E : néant																					   ***
+	*** nécessite : néant																			   ***
+	*** S : la valeur de l'attribut uiARCDestination												   ***
+	*** entraine : néant																			   ***
+	*****************************************************************************************************/
+
+	bool operator==(const CArc & ARCParam) const;
+	/*****************************************************************************************************
+	*** surcharge de l'operateur ==																	   ***
+	******************************************************************************************************
+	*** E : Une référence à un CArc																	   ***
+	*** nécessite : Comparer des CArcs provenants du même sommet									   ***
+	*** S : un booléen : vaut true si les CArcs pointent vers le même sommet, false sinon			   ***
+	*** entraine : néant																			   ***
+	*****************************************************************************************************/
+
+	void ARCModifierPoids(unsigned int uiNouveauPoids);
+	/*****************************************************************************************************
+	*** Accesseur en écriture de uiARCPoids															   ***
+	******************************************************************************************************
+	*** E : uiNouveauPoids : unsigned int ; le nouveau poids de l'arc.								   ***
+	*** nécessite : néant																			   ***
+	*** S : néant																					   ***
+	*** entraine : modification de l'attribut uiARCPoids											   ***
+	*****************************************************************************************************/
+
+	inline unsigned int ARCLirePoids() const;
+	/*****************************************************************************************************
+	*** Accesseur en lecture de uiARCPoids															   ***
+	******************************************************************************************************
+	*** E : néant																					   ***
+	*** nécessite : néant																			   ***
+	*** S : la valeur de l'attribut uiARCPoids														   ***
+	*** entraine : néant																			   ***
+	*****************************************************************************************************/
+
+};
+
+#endif
