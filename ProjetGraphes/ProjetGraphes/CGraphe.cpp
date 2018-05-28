@@ -144,3 +144,13 @@ CGraphe * CGraphe::GRAInverserArcs()
 
 	return graTmp;
 }
+
+unsigned int CGraphe::GRALireNbSommets()
+{
+	return uiGRANbSommets;
+}
+
+unsigned int CGraphe::GRALireNbArcs()
+{
+	return uiGRANbArc;
+}
