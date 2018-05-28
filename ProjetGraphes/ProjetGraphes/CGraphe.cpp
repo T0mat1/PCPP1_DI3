@@ -158,5 +158,14 @@ CGraphe * CGraphe::GRAExtraireArbreCouvrant()
 
 		}
 	}
+}
 
+unsigned int CGraphe::GRALireNbSommets()
+{
+	return uiGRANbSommets;
+}
+
+unsigned int CGraphe::GRALireNbArcs()
+{
+	return uiGRANbArc;
 }
