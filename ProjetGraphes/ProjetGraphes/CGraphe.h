@@ -123,6 +123,17 @@ public:
 	*** pour tous les sommets												   ***
 	*****************************************************************************/
 
+	CGraphe * GRAExtraireArbreCouvrant();
+	/*****************************************************************************
+	*** Méthode extrayant l'arbre couvrant du graphe						   ***
+	*** à l'aide de l'algorithme de Prim									   ***
+	******************************************************************************
+	*** E : néant															   ***
+	*** nécessite : néant													   ***
+	*** S : Un graphe représentant l'arbre couvrant							   ***
+	*** entraine : néant													   ***
+	*****************************************************************************/
+
 private:
 	inline CSommet & GRATrouverSommet(unsigned int uiNumero);
 	/*****************************************************************************
