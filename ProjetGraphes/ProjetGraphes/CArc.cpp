@@ -36,7 +36,7 @@ inline unsigned int CArc::ARCLireDestination() const
 
 bool CArc::operator==(const CArc & ARCParam) const
 {
-	return uiARCDestination == ARCParam.ARCLireDestination();
+	return (uiARCDestination == ARCParam.ARCLireDestination() && uiARCPoids == ARCParam.ARCLirePoids());
 }
 
 void CArc::ARCModifierPoids(unsigned int uiNouveauPoids)

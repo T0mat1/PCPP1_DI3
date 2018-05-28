@@ -67,12 +67,13 @@ public:
 	*** l'objet. Décrémente uiGRANbSommets. Renvoie une exception si le sommet n'existe pas	***
 	******************************************************************************************/
 
-	void GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination);
+	void GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiPoids);
 	/*****************************************************************************
 	*** Methode d'ajout d'un arc											   ***
 	******************************************************************************
 	*** E : uiDepart : unsigned int ; numéro du sommet de départ			   ***
 	*** uiDestination : unsigned int ; numéro du sommet de destination		   ***
+	*** uiPoids : unsigned int ; poids de l'arc								   ***
 	*** nécessite : néant													   ***
 	*** S : néant															   ***
 	*** entraine : création d'un nouvel arc	et incrémente uiGRANbArc		   ***

@@ -39,9 +39,9 @@ void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
 	}
 }
 
-void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination)
+void CGraphe::GRAAjouterArc(unsigned int uiDepart, unsigned int uiDestination, unsigned int uiPoids)
 {
-	CArc ARCTemp = CArc(uiDestination);
+	CArc ARCTemp = CArc(uiDestination, uiPoids);
 	GRATrouverSommet(uiDepart).SOMAjouterArcPartant(ARCTemp);
 	GRATrouverSommet(uiDestination).SOMAjouterArcArrivant(ARCTemp);
 	uiGRANbArc++;
@@ -81,7 +81,7 @@ void CGraphe::GRAAfficherGraphe()
 
 	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
 		for (unsigned int uiBoucleArc = 0; uiBoucleArc < vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants().size(); uiBoucleArc++) {
-			std::cout << vGRAListeSommets[uiBoucleSommet].SOMLireNumero() << "-->" << vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCLireDestination() << std::endl;
+			std::cout << vGRAListeSommets[uiBoucleSommet].SOMLireNumero() << "-->" << vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCLireDestination() << " ; Poids = " << vGRAListeSommets[uiBoucleSommet].SOMRecupererArcsPartants()[uiBoucleArc].ARCLirePoids() << std::endl;
 		}
 	}
 }
@@ -138,7 +138,7 @@ CGraphe * CGraphe::GRAInverserArcs()
 	}
 	for (unsigned int uiBoucleSommet = 0; uiBoucleSommet < vGRAListeSommets.size(); uiBoucleSommet++) {
 		for (unsigned int uiBoucleArc = 0; uiBoucleArc < GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcsPartants().size(); uiBoucleArc++) {
-			graTmp->GRAAjouterArc(GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcPartantAtIndex(uiBoucleArc)->ARCLireDestination(), GRARecupererSommetAtIndex(uiBoucleSommet)->SOMLireNumero());
+			graTmp->GRAAjouterArc(GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcPartantAtIndex(uiBoucleArc)->ARCLireDestination(), GRARecupererSommetAtIndex(uiBoucleSommet)->SOMLireNumero(), GRARecupererSommetAtIndex(uiBoucleSommet)->SOMRecupererArcPartantAtIndex(uiBoucleArc)->ARCLirePoids());
 		}
 	}
 
