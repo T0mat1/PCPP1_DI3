@@ -10,6 +10,7 @@ class CArc
 
 private:
 	unsigned int uiARCDestination;
+	unsigned int uiARCPoids;
 
 	// ----------------------------------------------- Constructeurs et destructeur ----------------------------------------------- 
 
@@ -31,7 +32,18 @@ public:
 	*** E : uiNouvelleDestination : unsigned int ; la nouvelle destination vers laquelle pointe l'arc. ***
 	*** nécessite : néant																			   ***
 	*** S : néant																					   ***
-	*** entraine : néant																			   ***
+	*** entraine : initialisation de l'arc. Par défaut avec un poids de 1.																			   ***
+	*****************************************************************************************************/
+
+	CArc(unsigned int uiNouvelleDestination, unsigned int uiPoids);
+	/*****************************************************************************************************
+	*** Constructeur																				   ***
+	******************************************************************************************************
+	*** E : uiNouvelleDestination : unsigned int ; la nouvelle destination vers laquelle pointe l'arc. ***
+	***		uiPoids : unsigned int ; le nouveau poids de l'arc.										   ***
+	*** nécessite : néant																			   ***
+	*** S : néant																					   ***
+	*** entraine : initialisation de l'arc.																			   ***
 	*****************************************************************************************************/
 
 	~CArc(void);
@@ -73,6 +85,26 @@ public:
 	*** E : Une référence à un CArc																	   ***
 	*** nécessite : Comparer des CArcs provenants du même sommet									   ***
 	*** S : un booléen : vaut true si les CArcs pointent vers le même sommet, false sinon			   ***
+	*** entraine : néant																			   ***
+	*****************************************************************************************************/
+
+	void ARCModifierPoids(unsigned int uiNouveauPoids);
+	/*****************************************************************************************************
+	*** Accesseur en écriture de uiARCPoids															   ***
+	******************************************************************************************************
+	*** E : uiNouveauPoids : unsigned int ; le nouveau poids de l'arc.								   ***
+	*** nécessite : néant																			   ***
+	*** S : néant																					   ***
+	*** entraine : modification de l'attribut uiARCPoids											   ***
+	*****************************************************************************************************/
+
+	inline unsigned int ARCLirePoids() const;
+	/*****************************************************************************************************
+	*** Accesseur en lecture de uiARCPoids															   ***
+	******************************************************************************************************
+	*** E : néant																					   ***
+	*** nécessite : néant																			   ***
+	*** S : la valeur de l'attribut uiARCPoids														   ***
 	*** entraine : néant																			   ***
 	*****************************************************************************************************/
 
