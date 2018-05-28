@@ -144,3 +144,19 @@ CGraphe * CGraphe::GRAInverserArcs()
 
 	return graTmp;
 }
+
+CGraphe * CGraphe::GRAExtraireArbreCouvrant()
+{
+
+	CGraphe	* pGRAArbre = new CGraphe();
+	for (unsigned int uiBoucleSommetCourant = 0; uiBoucleSommetCourant < uiGRANbSommets; uiBoucleSommetCourant++)
+	{
+		pGRAArbre->GRAAjouterSommet(vGRAListeSommets[uiBoucleSommetCourant].SOMLireNumero());
+
+		for (unsigned int uiBoucleSommetTmp = 0; uiBoucleSommetTmp < vGRAListeSommets.size(); uiBoucleSommetTmp++)
+		{
+
+		}
+	}
+
+}
