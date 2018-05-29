@@ -16,7 +16,7 @@ CGraphe::~CGraphe(void)
 {
 }
 
-//------------------------------------------------ Méthodes ------------------------------------------------
+//------------------------------------------------ Mï¿½thodes ------------------------------------------------
 
 void CGraphe::GRAAjouterSommet(unsigned int uiNumero)
 {
@@ -35,7 +35,7 @@ void CGraphe::GRASupprimerSommet(unsigned int uiNumero)
 		vGRAListeSommets.erase(std::remove(vGRAListeSommets.begin(), vGRAListeSommets.end(), SOMTemp), vGRAListeSommets.end());
 		uiGRANbSommets--;
 	} catch (CExceptions EXCe) {
-		std::cerr << "Exception levée - ID" << EXCe.EXCLireValeur() << std::endl;
+		std::cerr << "Exception levï¿½e - ID" << EXCe.EXCLireValeur() << std::endl;
 	}
 }
 
@@ -52,7 +52,7 @@ void CGraphe::GRAModifierArc(unsigned int uiDepart, unsigned int uiDestination, 
 	CArc * pARCTmp = &(GRATrouverSommet(uiDepart).SOMRecupererArcPartant(uiDestination));
 	//Suppression de l'arc de la liste d'arcs arrivant vers l'ancienne destination
 	GRATrouverSommet(uiDestination).SOMSupprimerArcArrivant(*pARCTmp);
-	//Ajout de l'arc à la liste d'arcs arrivant de la nouvelle destination
+	//Ajout de l'arc ï¿½ la liste d'arcs arrivant de la nouvelle destination
 	GRATrouverSommet(uiNouvelleDestination).SOMAjouterArcArrivant(*pARCTmp);
 	//Modification de la destination de l'arc, dans la liste des arcs partant du sommet de depart
 	(*pARCTmp).ARCModifierDestination(uiNouvelleDestination);
@@ -71,7 +71,7 @@ void CGraphe::GRASupprimerArc(unsigned int uiDepart, unsigned int uiDestination)
 	}
 	catch (CExceptions EXCe)
 	{
-		std::cerr << "Exception levée - ID" << EXCe.EXCLireValeur() << std::endl;
+		std::cerr << "Exception levï¿½e - ID" << EXCe.EXCLireValeur() << std::endl;
 	}
 }
 
@@ -150,12 +150,8 @@ CGraphe * CGraphe::GRAExtraireArbreCouvrant()
 
 	CGraphe	* pGRAArbre = new CGraphe();
 	pGRAArbre->GRAAjouterSommet(vGRAListeSommets[0].SOMLireNumero());
-	for (unsigned int uiBoucleSommetCourant = 0; uiBoucleSommetCourant < GRALireNbSommets(); uiBoucleSommetCourant++)
+	for (unsigned int uiBoucleSommetCourant = 0; uiBoucleSommetCourant < GRALireNbSommets()-1; uiBoucleSommetCourant++)
 	{
-		if (pGRAArbre->GRALireNbSommets() == GRALireNbSommets()) {
-			break;
-		}
-
 		unsigned int uiTmpBestDepart = GRARecupererSommetAtIndex(uiBoucleSommetCourant)->SOMLireNumero();
 		CArc * pARCBest = nullptr;
 
